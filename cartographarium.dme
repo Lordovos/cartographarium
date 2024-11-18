@@ -15,6 +15,11 @@
 
 // BEGIN_INCLUDE
 #include "maps\00-playground.dmm"
+#include "src\atomic.dm"
+#include "src\character.dm"
+#include "src\client.dm"
 #include "src\main.dm"
+#include "src\tileset.dm"
 #include "src\version.dm"
+#include "src\waypoint.dm"
 // END_INCLUDE

@@ -4,26 +4,20 @@ world
 	name = "Cartographarium"
 	icon_size = 16
 	view = "27x19"
-	fps = 30
+	tick_lag = 0.25
+	map_format = SIDE_MAP
+	movement_mode = TILE_MOVEMENT_MODE
+	mob = /mob/character
 
 	New()
 		::version = new ()
 
-mob
-	icon = 'assets/characters.dmi'
-	icon_state = "base"
-	pixel_y = 4
-
-	Login()
-		..()
-		world << "Welcome to Cartographarium v[::version]!"
-		world << "Last compiled with v[DM_VERSION].[DM_BUILD]."
-#ifdef DEBUG
-		world << "World in debug mode."
-#else
-		world << "World in release mode."
-#endif
-
-turf
+obj/crate
 	icon = 'assets/tileset.dmi'
-	icon_state = "grass"
+	icon_state = "crate"
+	density = TRUE
+
+	Click()
+		var/vector/v = vector(src.x, src.y)
+
+		world << v
