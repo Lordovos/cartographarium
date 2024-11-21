@@ -21,7 +21,7 @@ mob/character
 
 	verb/Say(t as text)
 		if (t)
-			world << "[src.name] says: [t]"
+			world << "\icon[src][src.name] says: [t]"
 
 	verb/SetStepDelay(n as num)
 		if (n)
