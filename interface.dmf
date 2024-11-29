@@ -1,0 +1,184 @@
+macro "macro"
+	elem 
+		name = "North+REP"
+		command = ".north"
+	elem 
+		name = "South+REP"
+		command = ".south"
+	elem 
+		name = "East+REP"
+		command = ".east"
+	elem 
+		name = "West+REP"
+		command = ".west"
+	elem 
+		name = "Northeast+REP"
+		command = ".northeast"
+	elem 
+		name = "Northwest+REP"
+		command = ".northwest"
+	elem 
+		name = "Southeast+REP"
+		command = ".southeast"
+	elem 
+		name = "Southwest+REP"
+		command = ".southwest"
+	elem 
+		name = "Center+REP"
+		command = ".center"
+
+
+window "chatbox"
+	elem "chatbox"
+		type = MAIN
+		pos = 384,0
+		size = 640x694
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = ""
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+		outer-size = 656x710
+		outer-pos = 384,0
+		inner-size = 640x694
+		inner-pos = 8,8
+		screen-size = 1920x1020
+	elem "chat"
+		type = OUTPUT
+		pos = 0,0
+		size = 640x694
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-default = true
+		border = line
+		saved-params = "max-lines"
+
+window "commandline"
+	elem "commandline"
+		type = MAIN
+		pos = 384,0
+		size = 640x28
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = ""
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+		outer-size = 656x44
+		outer-pos = 384,0
+		inner-size = 640x28
+		inner-pos = 8,8
+		screen-size = 1920x1020
+	elem "input"
+		type = INPUT
+		pos = 0,0
+		size = 640x28
+		anchor1 = 0,0
+		anchor2 = 100,0
+		font-size = 10
+		is-default = true
+		border = sunken
+		saved-params = ""
+		command = "!Say \""
+
+window "mainwindow"
+	elem "mainwindow"
+		type = MAIN
+		pos = 384,0
+		size = 1440x720
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		is-default = true
+		saved-params = "pos;size;is-minimized;is-maximized"
+		statusbar = false
+		macro = "macro"
+		outer-size = 1458x767
+		outer-pos = 384,0
+		inner-size = 1440x720
+		inner-pos = 9,38
+		screen-size = 1920x1020
+	elem "mainsplit"
+		type = CHILD
+		pos = 0,0
+		size = 1440x720
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = none
+		saved-params = "splitter"
+		left = "viewport"
+		right = "socialport"
+		is-vert = true
+		splitter = 66
+
+window "socialport"
+	elem "socialport"
+		type = MAIN
+		pos = 384,0
+		size = 640x716
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = ""
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+		outer-size = 656x732
+		outer-pos = 384,0
+		inner-size = 640x716
+		inner-pos = 8,8
+		screen-size = 1920x1020
+	elem "socialsplit"
+		type = CHILD
+		pos = 0,0
+		size = 640x716
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = none
+		saved-params = ""
+		left = "chatbox"
+		right = "commandline"
+		is-vert = false
+		splitter = 96.199997
+		show-splitter = false
+		lock = right
+
+window "viewport"
+	elem "viewport"
+		type = MAIN
+		pos = 384,0
+		size = 432x304
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = ""
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+	elem "map"
+		type = MAP
+		pos = 0,0
+		size = 432x304
+		anchor1 = 0,0
+		anchor2 = 100,100
+		font-family = "Public Pixel"
+		font-size = 6
+		is-default = true
+		saved-params = "zoom;letterbox;zoom-mode"
+		zoom = 2
+		style = "body {\n    font-size: 6px;\n    color: #fff;\n    margin: 0 8px;\n    vertical-align: top;\n    line-height: 1;\n}\n"
+

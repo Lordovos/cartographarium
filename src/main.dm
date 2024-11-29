@@ -45,9 +45,15 @@ mob/verb/NewMenu()
 	var/obj/menu/header = new (null, "about-header", vector(20, 2), vector(1, 18), vector(0, 8))
 	var/obj/menu/body = new (null, "about-body", vector(20, 34))
 	var/obj/menu/group/g = new ("group-about")
+	var/t = "Cartographarium\nv[::version]\n\nDream Maker\nv[DM_VERSION].[DM_BUILD]\n\n"
 
+#ifdef DEBUG
+	t += "Debug Mode"
+#else
+	t += "Release Mode"
+#endif
 	header.text_field.Set("About")
-	body.text_field.Set("Information about the world goes here.")
+	body.text_field.Set(t)
 	g.Set(header.ident, header)
 	g.Set(body.ident, body)
 	src.client.SetMenu(g.ident, g)

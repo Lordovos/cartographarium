@@ -10,6 +10,7 @@ mob/character
 		if (start)
 			src.loc = start.loc
 
+		src.NewMenu()
 		world << "Welcome to Cartographarium v[::version]!"
 		world << "Last compiled with v[DM_VERSION].[DM_BUILD]."
 #ifdef DEBUG

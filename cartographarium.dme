@@ -14,6 +14,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "interface.dmf"
 #include "maps\00-playground.dmm"
 #include "src\atomic.dm"
 #include "src\character.dm"

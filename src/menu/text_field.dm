@@ -10,7 +10,7 @@ obj/menu/text_field
 		src.maptext_height = maptext_height
 
 	proc/Set(maptext)
-		src.maptext = "<p style=\"font-family: 'Public Pixel'; font-size: 6px; margin: 0 8px; color: #fff; vertical-align: top; line-height: 1;\">[maptext]</p>"
+		src.maptext = "<p>[maptext]</p>"
 
 	proc/Append(maptext)
-		src.maptext += "<p style=\"font-family: 'Public Pixel'; font-size: 6px; margin: 0 8px; color: #fff; vertical-align: top; line-height: 1;\">[maptext]</p>"
+		src.maptext += "<p>[maptext]</p>"
