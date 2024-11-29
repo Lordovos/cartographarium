@@ -10,15 +10,6 @@ mob/character
 		if (start)
 			src.loc = start.loc
 
-		src.NewMenu()
-		world << "Welcome to Cartographarium v[::version]!"
-		world << "Last compiled with v[DM_VERSION].[DM_BUILD]."
-#ifdef DEBUG
-		world << "World in debug mode."
-#else
-		world << "World in release mode."
-#endif
-
 	verb/Say(t as text)
 		if (t)
 			world << "\icon[src][src.name] says: [t]"

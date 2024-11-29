@@ -1,6 +1,13 @@
+atom
+	proc/Bumped(atom/movable/m)
+
 atom/movable
 	step_size = 16
 	appearance_flags = PIXEL_SCALE | LONG_GLIDE
+
+	Bump(atom/a)
+		a.Bumped(src)
+		..()
 
 	proc/Step(dir = src.dir, delay)
 		src.glide_size = delay ? src.step_size / (delay / world.tick_lag) : src.step_size

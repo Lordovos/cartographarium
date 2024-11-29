@@ -28,12 +28,15 @@ obj/crate
 	icon_state = "crate"
 	density = TRUE
 
+	Bumped(atom/movable/m)
+		step(src, m.dir)
+
 obj/star
 	icon = 'assets/tileset.dmi'
 	icon_state = "sol"
 
 	Click()
-		usr << src.name
+		world << src.name
 
 	MouseEntered()
 		src.filters += filter(type = "outline", color = "#fff", flags = OUTLINE_SHARP)
@@ -82,26 +85,3 @@ mob/verb/Grid()
 
 	o.screen_loc = "SOUTHWEST to NORTHEAST"
 	src.client.screen += o
-/*
-// max_width = 53
-// max_height = 37
-
-mob/verb/Menu()
-	var/t = "Hello, world!\n\nYou are [src.name].\n\nCartographarium v[::version]\n\nDream Maker v[DM_VERSION].[DM_BUILD]\n\n"
-
-#ifdef DEBUG
-	t += "Debug Mode\n"
-#else
-	t += "Release Mode\n"
-#endif
-
-	src.DrawMenu(20, 2, 1, 18, 0, 8, "Menu\n")
-	src.DrawMenu(20, 34, 1, 1, 0, 0, t)
-
-mob/verb/MenuLoop()
-	for (var/i = 1 to 256)
-		var/obj/menu/m = new (null, "menu-[rand(-100000, 100000)]", vector(rand(1, 53), rand(1, 37)))
-
-		src.client.screen += m
-		sleep (0.1)
-*/
