@@ -5,7 +5,6 @@ mob/character
 
 	Login()
 		..()
-
 		var/obj/waypoint/start/start = locate()
 
 		if (start)
@@ -26,3 +25,7 @@ mob/character
 	verb/SetStepDelay(n as num)
 		if (n)
 			src.step_delay = n
+
+	verb/Rock()
+		animate(src, transform = turn(src.transform, 25), time = 10, loop = -1, easing = ELASTIC_EASING)
+		animate(transform = turn(src.transform, -55), time = 10, easing = ELASTIC_EASING)

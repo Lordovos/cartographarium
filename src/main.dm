@@ -1,8 +1,6 @@
 var/version/version
 
-/*
-	This procedure exists purely to include additional resources in the resource file, such as fonts.
-*/
+// This procedure exists purely to include additional resources in the resource file, such as fonts.
 proc/additional_resources()
 	return list(
 		/*
@@ -14,6 +12,7 @@ proc/additional_resources()
 
 world
 	name = "Cartographarium"
+	hub = "LordAndrew.Cartographarium"
 	icon_size = 16
 	view = "27x19"
 	tick_lag = 0.25
@@ -29,97 +28,46 @@ obj/crate
 	icon_state = "crate"
 	density = TRUE
 
-obj/menu
-	plane = 2
+obj/star
+	icon = 'assets/tileset.dmi'
+	icon_state = "sol"
 
-	var/list/slices
-	var/obj/menu/text_field/text_field
+	Click()
+		usr << src.name
 
-	New()
-		..()
-		src.slices = list()
+	MouseEntered()
+		src.filters += filter(type = "outline", color = "#fff", flags = OUTLINE_SHARP)
 
-obj/menu/slice
-	parent_type = /obj
-	icon = 'assets/menu.dmi'
-	plane = 2
-	layer = 1
+	MouseExited()
+		src.filters = list()
 
-	New(loc, icon_state)
-		..()
-		src.icon_state = icon_state
+mob/verb/NewMenu()
+	var/obj/menu/header = new (null, "about-header", vector(20, 2), vector(1, 18), vector(0, 8))
+	var/obj/menu/body = new (null, "about-body", vector(20, 34))
+	var/obj/menu/group/g = new ("group-about")
 
-obj/menu/text_field
-	parent_type = /obj
-	plane = 2
-	layer = 2
-	maptext_y = 8
+	header.text_field.Set("About")
+	body.text_field.Set("Information about the world goes here.")
+	g.Set(header.ident, header)
+	g.Set(body.ident, body)
+	src.client.SetMenu(g.ident, g)
+	src.client.ShowMenu(g.ident)
 
-	New(loc, maptext_width, maptext_height)
-		..()
-		src.maptext_width = maptext_width
-		src.maptext_height = maptext_height
+mob/verb/OpenMenu()
+	src.client.ShowMenu("group-about")
 
-	proc/Set(maptext)
-		src.maptext = "<p style=\"font-family: 'Public Pixel'; font-size: 6px; margin: 0 8px; color: #fff; vertical-align: top; line-height: 1;\">[maptext]</p>"
+mob/verb/ShowText()
+	src.client.GetMenu("group-about").Get("about-body").text_field.vis_flags &= ~VIS_HIDE
 
-obj/menu/group
-	parent_type = /datum
+mob/verb/HideText()
+	src.client.GetMenu("group-about").Get("about-body").text_field.vis_flags |= VIS_HIDE
 
-	var/alist/menus
+mob/verb/CloseMenu()
+	src.client.HideMenu("group-about")
 
-	New()
-		src.menus = alist()
+mob/verb/SetMenuText(t as text)
+	src.client.GetMenu("group-about").Get("about-body").text_field.Append(t)
 
-	proc/Get(key)
-		return src.menus?[key]
-
-	proc/Set(key, value)
-		src.menus?[key] = value
-
-obj/menu
-	proc/Draw(vector/size = vector(1, 1), vector/position = vector(1, 1), vector/offset = vector(0, 0))
-
-// TODO: Convert into a procedure for the menu prototype. Optimize for menus less than 2 tiles wide or tall. Convert repeated results to variables.
-mob/proc/DrawMenu(width, height, x = 1, y = 1, offset_x = 0, offset_y = 0, maptext = "")
-	var/const/SLICE_SIZE = 8
-	var/obj/menu/menu = new ()
-	var/obj/menu/slice/bl = new (menu, "corner")
-	var/obj/menu/slice/b = new (menu, "side")
-	var/obj/menu/slice/br = new (menu, "corner")
-	var/obj/menu/slice/l = new (menu, "side")
-	var/obj/menu/slice/c = new (menu, "center")
-	var/obj/menu/slice/r = new (menu, "side")
-	var/obj/menu/slice/tl = new (menu, "corner")
-	var/obj/menu/slice/t = new (menu, "side")
-	var/obj/menu/slice/tr = new (menu, "corner")
-
-	bl.transform = matrix().Translate(0, 0)
-	b.transform = matrix().Scale(((width * SLICE_SIZE) / SLICE_SIZE) - 1, 1).Translate((width * SLICE_SIZE) / 2, 0)
-	br.transform = matrix().Turn(270).Translate(width * SLICE_SIZE, 0)
-	l.transform = matrix().Turn(90).Scale(1, ((height * SLICE_SIZE) / SLICE_SIZE) - 1).Translate(0, (height * SLICE_SIZE) / 2)
-	c.transform = matrix().Scale(((width * SLICE_SIZE) / SLICE_SIZE) - 1, ((height * SLICE_SIZE) / SLICE_SIZE) - 1).Translate((width * SLICE_SIZE) / 2, (height * SLICE_SIZE) / 2)
-	r.transform = matrix().Turn(270).Scale(1, ((height * SLICE_SIZE) / SLICE_SIZE) - 1).Translate(width * SLICE_SIZE, (height * SLICE_SIZE) / 2)
-	tl.transform = matrix().Turn(90).Translate(0, height * SLICE_SIZE)
-	t.transform = matrix().Turn(180).Scale(((width * SLICE_SIZE) / SLICE_SIZE) - 1, 1).Translate((width * SLICE_SIZE) / 2, height * SLICE_SIZE)
-	tr.transform = matrix().Turn(180).Translate(width * SLICE_SIZE, height * SLICE_SIZE)
-
-	menu.text_field = new (menu, (width * SLICE_SIZE) + SLICE_SIZE, (height * SLICE_SIZE) - SLICE_SIZE)
-	menu.text_field.Set(maptext)
-	menu.slices += list(bl, b, br, l, c, r, tl, t, tr, menu.text_field)
-	menu.vis_contents += menu.slices
-	menu.screen_loc = "[x]:[offset_x],[y]:[offset_y]"
-	src.client.screen += menu
-/*
-mob/verb/UpdateTextbox()
-	var/str = "Hello, world! These are some tests."
-	var/buffer = ""
-
-	for (var/i = 1 to length(str))
-		buffer += str[i]
-		src.textbox?.Set(buffer)
-		sleep (1)
-*/
 mob/verb/ClearScreen()
 	src.client.screen.Cut()
 
@@ -128,7 +76,7 @@ mob/verb/Grid()
 
 	o.screen_loc = "SOUTHWEST to NORTHEAST"
 	src.client.screen += o
-
+/*
 // max_width = 53
 // max_height = 37
 
@@ -140,10 +88,14 @@ mob/verb/Menu()
 #else
 	t += "Release Mode\n"
 #endif
+
 	src.DrawMenu(20, 2, 1, 18, 0, 8, "Menu\n")
 	src.DrawMenu(20, 34, 1, 1, 0, 0, t)
 
 mob/verb/MenuLoop()
-	for (var/i = 1 to 64)
-		src.DrawMenu(rand(1, 53), rand(1, 37))
-		sleep (1)
+	for (var/i = 1 to 256)
+		var/obj/menu/m = new (null, "menu-[rand(-100000, 100000)]", vector(rand(1, 53), rand(1, 37)))
+
+		src.client.screen += m
+		sleep (0.1)
+*/

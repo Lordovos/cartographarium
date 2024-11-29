@@ -4,10 +4,14 @@
 "d" = (/turf/tileset/metal_floor,/area)
 "e" = (/turf,/turf/tileset/metal_floor,/area)
 "f" = (/obj/waypoint/start,/turf/tileset/metal_floor,/area)
-"g" = (/obj/crate{icon_state = "filingcabinet"},/turf/tileset/metal_floor,/area)
+"g" = (/obj/crate{name = "filingcabinet"; icon_state = "filingcabinet"},/turf/tileset/metal_floor,/area)
 "h" = (/turf,/turf/tileset/metal_floor{icon_state = "metalfloor2"},/area)
 "i" = (/mob/character{name = "Charactereus Tutorialis"; pixel_y = 11},/obj/crate,/turf/tileset/grass,/area)
 "j" = (/mob/character,/turf/tileset/metal_floor,/area)
+"k" = (/turf/tileset/space,/area)
+"l" = (/obj/star{name = "Sol"; pixel_x = -5; pixel_y = 2},/turf/tileset/space,/area)
+"m" = (/obj/star{name = "Proxima Centauri"; icon_state = "reddwarf"; pixel_x = -7; pixel_y = -7},/turf/tileset/space,/area)
+"n" = (/obj/star{name = "Rigil Kentaurus"; pixel_x = 5; pixel_y = 4},/obj/star{name = "Toliman"; icon_state = "orangesol"; pixel_y = 4},/turf/tileset/space,/area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -36,7 +40,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaabbbbbbcddddddddddddaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaabbbbdddddddddddcdddaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaabbbddddddddddddddddaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaabbddddcddddggddddddaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaabbddddcdddddgddddddaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaadbdddjdddddddddcdddaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaacdddddeeddhdddcddddaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaadddcdddddfdddddddcdaaaaaaaaaaaaaaaaaaaaaa
@@ -46,14 +50,14 @@ aaaaaaaaaaaaaaaaaaaaaaaddcdddddddddaaaddddaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaddddddddddcdaaaddcdaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaadddddddddddddddddddaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaddddddddcddddddddddaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaakkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaakkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaakkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaakkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaakkkmlkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaakknkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaakkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaakkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

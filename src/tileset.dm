@@ -6,3 +6,6 @@ turf/tileset
 
 	metal_floor
 		icon_state = "metalfloor"
+
+	space
+		icon_state = "space"
