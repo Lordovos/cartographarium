@@ -1,22 +1,10 @@
 macro "macro"
 	elem 
-		name = "North+REP"
-		command = ".north"
-	elem 
-		name = "South+REP"
-		command = ".south"
-	elem 
-		name = "East+REP"
-		command = ".east"
-	elem 
-		name = "West+REP"
-		command = ".west"
+		name = "Center+REP"
+		command = ".center"
 	elem 
 		name = "Northeast+REP"
 		command = ".northeast"
-	elem 
-		name = "Northwest+REP"
-		command = ".northwest"
 	elem 
 		name = "Southeast+REP"
 		command = ".southeast"
@@ -24,8 +12,26 @@ macro "macro"
 		name = "Southwest+REP"
 		command = ".southwest"
 	elem 
-		name = "Center+REP"
-		command = ".center"
+		name = "Northwest+REP"
+		command = ".northwest"
+	elem 
+		name = "West+REP"
+		command = ".west"
+	elem 
+		name = "North+REP"
+		command = ".north"
+	elem 
+		name = "East+REP"
+		command = ".east"
+	elem 
+		name = "South+REP"
+		command = ".south"
+	elem 
+		name = "Any"
+		command = "KeyDown \"[[*]]\""
+	elem 
+		name = "Any+UP"
+		command = "KeyUp \"[[*]]\""
 
 
 window "chatbox"
@@ -162,6 +168,7 @@ window "viewport"
 		size = 432x304
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = ""
 		titlebar = false
 		statusbar = false
@@ -169,6 +176,11 @@ window "viewport"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 448x320
+		outer-pos = 384,0
+		inner-size = 432x304
+		inner-pos = 8,8
+		screen-size = 1920x1020
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -180,5 +192,5 @@ window "viewport"
 		is-default = true
 		saved-params = "zoom;letterbox;zoom-mode"
 		zoom = 2
-		style = "body {\n    font-size: 6px;\n    color: #fff;\n    margin: 0 8px;\n    vertical-align: top;\n    line-height: 1;\n}\n"
+		style = "body {\n    font-size: 6pt;\n    color: #fff;\n    margin: 0 8px;\n    vertical-align: top;\n    line-height: 1;\n}\n"
 

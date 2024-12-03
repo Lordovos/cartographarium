@@ -26,7 +26,7 @@ mob
 	layer = 2
 
 	var/tmp/next_step = 0 as num
-	var/tmp/step_delay = 1 as num
+	var/tmp/step_delay = 2 as num
 
 	Step(dir = src.dir, delay = src.step_delay)
 		if (src.next_step <= world.time)

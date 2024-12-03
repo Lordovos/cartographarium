@@ -2,6 +2,7 @@ client
 	tick_lag = 0.01
 	control_freak = CONTROL_FREAK_SKIN
 
+	var/role = /role::DIRECTOR
 	var/alist/menus
 
 	New()
@@ -34,3 +35,9 @@ client
 
 	proc/HideMenu(ident)
 		src.GetMenu(ident)?.Hide(src)
+
+	verb/KeyDown(k as text)
+		set instant = TRUE
+
+	verb/KeyUp(k as text)
+		set instant = TRUE

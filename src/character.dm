@@ -10,14 +10,22 @@ mob/character
 		if (start)
 			src.loc = start.loc
 
+		switch (src.client?.role)
+			if (/role::UNDERSTUDY)
+				src << "A studious understudy. Welcome!"
+
+			if (/role::ACTOR)
+				src << "An aspiring actor. Welcome back!"
+
+			if (/role::DIRECTOR)
+				src << "A dignified director. Your chair awaits!"
+
+			if (/role::PRODUCER)
+				src << "The premier producer. You call all the shots!"
+
+			else
+				src << "Unknown role!"
+
 	verb/Say(t as text)
 		if (t)
 			world << "\icon[src][src.name] says: [t]"
-
-	verb/SetStepDelay(n as num)
-		if (n)
-			src.step_delay = n
-
-	verb/Rock()
-		animate(src, transform = turn(src.transform, 25), time = 10, loop = -1, easing = ELASTIC_EASING)
-		animate(transform = turn(src.transform, -55), time = 10, easing = ELASTIC_EASING)
