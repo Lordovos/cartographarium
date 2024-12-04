@@ -28,4 +28,4 @@ mob/character
 
 	verb/Say(t as text)
 		if (t)
-			world << "\icon[src][src.name] says: [t]"
+			world << "<span style=\"color: #d35938\">\icon[src][src.name] says: [t]</span>"

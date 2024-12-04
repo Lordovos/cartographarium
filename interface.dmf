@@ -60,9 +60,12 @@ window "chatbox"
 		size = 640x694
 		anchor1 = 0,0
 		anchor2 = 100,100
+		text-color = #fff
+		background-color = #002b36
 		is-default = true
 		border = line
 		saved-params = "max-lines"
+		style = ""
 
 window "commandline"
 	elem "commandline"
@@ -91,10 +94,12 @@ window "commandline"
 		anchor1 = 0,0
 		anchor2 = 100,0
 		font-size = 10
+		text-color = #d35938
+		background-color = #002b36
 		is-default = true
 		border = sunken
 		saved-params = ""
-		command = "!Say \""
+		command = "Say \""
 
 window "mainwindow"
 	elem "mainwindow"
@@ -189,7 +194,8 @@ window "viewport"
 		anchor2 = 100,100
 		font-family = "Public Pixel"
 		font-size = 6
+		text-color = #fff
 		is-default = true
 		saved-params = "zoom"
 		zoom = 2
-		style = "body {\n    color: #fff;\n    margin: 0 8px;\n    vertical-align: top;\n    line-height: 1;\n}\n.air-green {\n    color: #83d12c;\n}\n.earth-yellow {\n    color: #f8b800;\n}\n.fire-red {\n    color: #fc7460;\n}\n.water-blue {\n    color: #6cf;\n}\n.dark-gray, .dark-grey {\n    color: #a8a8a8;\n}\n.spirit-white {\n    color: #f8d890;\n}\n.chaos-purple {\n    color: #f878f8;\n}\n"
+		style = "body {\n    margin: 0 8px;\n    vertical-align: top;\n    line-height: 1;\n}\n.air-green {\n    color: #83d12c;\n}\n.earth-yellow {\n    color: #f8b800;\n}\n.fire-red {\n    color: #fc7460;\n}\n.water-blue {\n    color: #6cf;\n}\n.dark-gray, .dark-grey {\n    color: #a8a8a8;\n}\n.spirit-white {\n    color: #f8d890;\n}\n.chaos-purple {\n    color: #f878f8;\n}\n"
