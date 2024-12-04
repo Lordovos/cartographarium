@@ -1,0 +1,27 @@
+body {
+    color: #fff;
+    margin: 0 8px;
+    vertical-align: top;
+    line-height: 1;
+}
+.air-green {
+    color: #83d12c;
+}
+.earth-yellow {
+    color: #f8b800;
+}
+.fire-red {
+    color: #fc7460;
+}
+.water-blue {
+    color: #6cf;
+}
+.dark-gray, .dark-grey {
+    color: #a8a8a8;
+}
+.spirit-white {
+    color: #f8d890;
+}
+.chaos-purple {
+    color: #f878f8;
+}

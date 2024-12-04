@@ -190,7 +190,6 @@ window "viewport"
 		font-family = "Public Pixel"
 		font-size = 6
 		is-default = true
-		saved-params = "zoom;letterbox;zoom-mode"
+		saved-params = "zoom"
 		zoom = 2
-		style = "body {\n    font-size: 6pt;\n    color: #fff;\n    margin: 0 8px;\n    vertical-align: top;\n    line-height: 1;\n}\n"
-
+		style = "body {\n    color: #fff;\n    margin: 0 8px;\n    vertical-align: top;\n    line-height: 1;\n}\n.air-green {\n    color: #83d12c;\n}\n.earth-yellow {\n    color: #f8b800;\n}\n.fire-red {\n    color: #fc7460;\n}\n.water-blue {\n    color: #6cf;\n}\n.dark-gray, .dark-grey {\n    color: #a8a8a8;\n}\n.spirit-white {\n    color: #f8d890;\n}\n.chaos-purple {\n    color: #f878f8;\n}\n"

@@ -19,6 +19,7 @@
 #include "src\atomic.dm"
 #include "src\character.dm"
 #include "src\client.dm"
+#include "src\item.dm"
 #include "src\main.dm"
 #include "src\tileset.dm"
 #include "src\version.dm"

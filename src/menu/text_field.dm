@@ -10,7 +10,4 @@ obj/menu/text_field
 		src.maptext_height = maptext_height
 
 	proc/Set(maptext)
-		src.maptext = "<p>[maptext]</p>"
-
-	proc/Append(maptext)
-		src.maptext += "<p>[maptext]</p>"
+		src.maptext = maptext
