@@ -38,15 +38,8 @@ client
 
 	verb/KeyDown(k as text)
 		set instant = TRUE
-
-		if (k == "C")
-			src.mob.Menu()
-
-		if (k == "Q")
-			src << winget(src, null, "focus")
-
-		if (k == "T")
-			winset(src, "commandline.input", "focus=true")
+		set hidden = TRUE
 
 	verb/KeyUp(k as text)
 		set instant = TRUE
+		set hidden = TRUE

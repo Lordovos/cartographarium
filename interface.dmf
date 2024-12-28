@@ -33,7 +33,6 @@ macro "macro"
 		name = "Any+UP"
 		command = "KeyUp \"[[*]]\""
 
-
 window "chatbox"
 	elem "chatbox"
 		type = MAIN
