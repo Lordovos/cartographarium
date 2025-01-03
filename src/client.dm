@@ -3,9 +3,11 @@ client
 	control_freak = CONTROL_FREAK_SKIN
 
 	var/role = /role::DIRECTOR
+	var/list/keys_pressed
 	var/alist/menus
 
 	New()
+		src.keys_pressed = list()
 		src.menus = alist()
 
 		if (src.IsByondMember())
@@ -20,9 +22,45 @@ client
 		world << "[src.key] has left the world."
 		..()
 
-	Move(loc, dir)
-		walk(src.mob, 0)
-		return src.mob.Step(dir)
+	North()
+	South()
+	East()
+	West()
+	Northeast()
+	Northwest()
+	Southeast()
+	Southwest()
+	Center()
+
+	proc/Tick()
+		set waitfor = FALSE
+
+		var/move_dir = 0
+
+		if (src.keys_pressed["W"])
+			move_dir |= NORTH
+
+		if (src.keys_pressed["A"])
+			move_dir |= WEST
+
+		if (src.keys_pressed["S"])
+			move_dir |= SOUTH
+
+		if (src.keys_pressed["D"])
+			move_dir |= EAST
+
+		if (move_dir)
+			src.mob.Step(move_dir)
+
+	proc/Process()
+		if (src.keys_pressed["I"])
+			src.mob.Menu()
+
+		if (src.keys_pressed["Ctrl"] && src.keys_pressed["I"])
+			src.screen.Cut()
+
+		if (src.keys_pressed["T"])
+			world << "Hello, world!"
 
 	proc/GetMenu(ident)
 		return src.menus?[ident]
@@ -40,6 +78,11 @@ client
 		set instant = TRUE
 		set hidden = TRUE
 
+		src.keys_pressed[k] = TRUE
+		src.Process()
+
 	verb/KeyUp(k as text)
 		set instant = TRUE
 		set hidden = TRUE
+
+		src.keys_pressed -= k

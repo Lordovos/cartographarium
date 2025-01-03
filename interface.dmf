@@ -1,32 +1,5 @@
 macro "macro"
 	elem 
-		name = "Center+REP"
-		command = ".center"
-	elem 
-		name = "Northeast+REP"
-		command = ".northeast"
-	elem 
-		name = "Southeast+REP"
-		command = ".southeast"
-	elem 
-		name = "Southwest+REP"
-		command = ".southwest"
-	elem 
-		name = "Northwest+REP"
-		command = ".northwest"
-	elem 
-		name = "West+REP"
-		command = ".west"
-	elem 
-		name = "North+REP"
-		command = ".north"
-	elem 
-		name = "East+REP"
-		command = ".east"
-	elem 
-		name = "South+REP"
-		command = ".south"
-	elem 
 		name = "Any"
 		command = "KeyDown \"[[*]]\""
 	elem 

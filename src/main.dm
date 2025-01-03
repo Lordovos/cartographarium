@@ -31,6 +31,13 @@ world
 	New()
 		::version = new ()
 
+	Tick()
+		for (var/client/c)
+			try
+				c.Tick()
+
+			catch ()
+
 // Enumerated types in idiomatic DM.
 role
 	var/const/UNDERSTUDY = "Understudy"
