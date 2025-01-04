@@ -51,5 +51,5 @@ obj/menu
 			src.slices += c
 
 		src.screen_loc = "[position.x]:[offset.x],[position.y]:[offset.y]"
-		src.text_field = new (src, width + SLICE_SIZE, height - SLICE_SIZE)
+		src.text_field = new (src, vector(width + SLICE_SIZE, height - SLICE_SIZE))
 		src.vis_contents += list(src.slices, src.text_field)

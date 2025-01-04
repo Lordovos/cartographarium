@@ -57,25 +57,37 @@ client
 	proc/Process(key)
 		switch (key)
 			if ("Q")
-				src.mob.Menu()
-
-			if ("T")
-				world << "Hello, world!"
+				src.Debug()
 
 			if ("E")
 				src.Interact()
-				animate(src.mob, icon_state = "interact", time = 4)
-				animate(icon_state = "base")
 
 			if ("Escape")
 				for (var/ident in src.open_menus)
 					src.HideMenu(ident)
 
-				src.mob.icon_state = "base"
-
 	proc/Interact()
 		for (var/atom/movable/m in get_step(src.mob, src.mob.dir))
 			m.OnInteract(src.mob)
+
+	proc/Debug()
+		var/ident = "debug"
+		var/obj/menu/header = src.GetMenu(ident)?.Get("header")
+		var/obj/menu/body = src.GetMenu(ident)?.Get("body")
+		var/maptext
+
+		if (!(ident in src.open_menus))
+			src.ShowMenu(ident)
+
+			spawn ()
+				while (ident in src.open_menus)
+					maptext = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member\n" : null][src.role]\n@[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\n"
+					header?.text_field.Set("Debug")
+					body?.text_field.Set(maptext)
+					sleep (world.tick_lag)
+
+		else
+			src.HideMenu(ident)
 
 	proc/GetMenu(ident)
 		return src.menus?[ident]

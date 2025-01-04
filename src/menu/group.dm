@@ -27,3 +27,4 @@ obj/menu/group
 
 			if (menu)
 				c.screen -= menu
+				menu.text_field?.Set(null)

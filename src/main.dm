@@ -4,10 +4,11 @@ var/version/version
 proc/additional_resources()
 	return list(
 		/*
-			Public Pixel font by GGBotNet (https://ggbot.itch.io/)
+			Public Pixel and Vaticanus fonts by GGBotNet (https://www.ggbot.net/)
 			Licensed under CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
 		*/
 		'assets/fonts/PublicPixel.ttf',
+		'assets/fonts/Vaticanus.ttf',
 		/*
 			map.css and chat.css are hard copies of the style sheets used by the map and chat interface elements, respectively.
 			TODO: Automate updating the interface elements with their respective style sheets. Right now you need to manually
@@ -17,6 +18,9 @@ proc/additional_resources()
 		'assets/map.css',
 		// 'assets/chat.css'
 	)
+
+proc/hasvar(datum/d, v)
+	return (v in d?.vars)
 
 world
 	name = "Cartographarium"
@@ -52,25 +56,3 @@ rarity
 	var/const/EPIC = "Epic"
 	var/const/LEGENDARY = "Legendary"
 	var/const/MYTHIC = "Mythic"
-
-mob/proc/Menu()
-	var/obj/menu/header = src.client?.GetMenu("debug")?.Get("header")
-	var/obj/menu/body = src.client?.GetMenu("debug")?.Get("body")
-	var/t
-
-	if (!("debug" in src.client?.open_menus))
-		src.client?.ShowMenu("debug")
-		src.icon_state = "thinking"
-
-		spawn ()
-			while ("debug" in src.client?.open_menus)
-				t = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.name]\n[src.client.IsByondMember() ? "BYOND Member\n" : null][src.client?.role]\n@[src.x], [src.y], [src.z]\n[src.client?.key_presses.Join(", ")]\n"
-				header?.text_field.Set("Debug")
-				body?.text_field.Set(t)
-				sleep (world.tick_lag)
-
-	else
-		src.client?.HideMenu("debug")
-		header?.text_field.Set(null)
-		body?.text_field.Set(null)
-		src.icon_state = "base"
