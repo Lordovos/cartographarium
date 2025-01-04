@@ -10,21 +10,13 @@ mob/character
 		if (start)
 			src.loc = start.loc
 
-		switch (src.client?.role)
-			if (/role::UNDERSTUDY)
-				src << "A studious understudy. Welcome!"
+		var/obj/menu/group/g = new ("debug")
+		var/obj/menu/header = new (null, "header", vector(15, 2), vector(1, 13))
+		var/obj/menu/body = new (null, "body", vector(15, 23))
 
-			if (/role::ACTOR)
-				src << "An aspiring actor. Welcome back!"
-
-			if (/role::DIRECTOR)
-				src << "A dignified director. Your chair awaits!"
-
-			if (/role::PRODUCER)
-				src << "The premier producer. You call all the shots!"
-
-			else
-				src << "Unknown role!"
+		g.Set(header.ident, header)
+		g.Set(body.ident, body)
+		src.client.SetMenu(g.ident, g)
 
 	verb/Say(t as text)
 		if (t)

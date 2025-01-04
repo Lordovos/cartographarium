@@ -1,6 +1,6 @@
 var/version/version
 
-// This procedure exists purely to include additional resources in the resource file, such as fonts.
+// This procedure exists purely to include additional resources in the resource file, such as fonts and style sheets.
 proc/additional_resources()
 	return list(
 		/*
@@ -53,24 +53,24 @@ rarity
 	var/const/LEGENDARY = "Legendary"
 	var/const/MYTHIC = "Mythic"
 
-mob/verb/Menu()
-	var/obj/menu/group/g = new ("test")
-	var/obj/menu/m = new (null, "test", vector(15, 23))
-	var/t = "Hello, world! This is a test.\n\n"
-	var/list/classes = list("air-green", "earth-yellow", "fire-red", "water-blue", "dark-gray", "spirit-white", "chaos-purple")
+mob/proc/Menu()
+	var/obj/menu/header = src.client?.GetMenu("debug")?.Get("header")
+	var/obj/menu/body = src.client?.GetMenu("debug")?.Get("body")
+	var/t
 
-	t += "(default)\n"
+	if (!("debug" in src.client?.open_menus))
+		src.client?.ShowMenu("debug")
+		src.icon_state = "thinking"
 
-	for (var/class in classes)
-		t += "<span class=\"[class]\">[class]</span>\n"
+		spawn ()
+			while ("debug" in src.client?.open_menus)
+				t = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.name]\n[src.client.IsByondMember() ? "BYOND Member\n" : null][src.client?.role]\n@[src.x], [src.y], [src.z]\n[src.client?.key_presses.Join(", ")]\n"
+				header?.text_field.Set("Debug")
+				body?.text_field.Set(t)
+				sleep (world.tick_lag)
 
-	t += "\n&#9608;"
-
-	for (var/class in classes)
-		t += "<span class=\"[class]\">&#9608;</span>"
-
-	t += "\n"
-	m.text_field.Set(t)
-	g.Set(m.ident, m)
-	src.client.SetMenu(g.ident, g)
-	src.client.ShowMenu(g.ident)
+	else
+		src.client?.HideMenu("debug")
+		header?.text_field.Set(null)
+		body?.text_field.Set(null)
+		src.icon_state = "base"

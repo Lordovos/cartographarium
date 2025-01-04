@@ -1,5 +1,6 @@
 atom
 	proc/Bumped(atom/movable/m)
+	proc/OnInteract(mob/m)
 
 atom/movable
 	step_size = 16

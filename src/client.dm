@@ -3,12 +3,14 @@ client
 	control_freak = CONTROL_FREAK_SKIN
 
 	var/role = /role::DIRECTOR
-	var/list/keys_pressed
+	var/list/key_presses
 	var/alist/menus
+	var/list/open_menus
 
 	New()
-		src.keys_pressed = list()
+		src.key_presses = list()
 		src.menus = alist()
+		src.open_menus = list()
 
 		if (src.IsByondMember())
 			world << "BYOND Member [src.key] has joined the world!"
@@ -37,30 +39,43 @@ client
 
 		var/move_dir = 0
 
-		if (src.keys_pressed["W"])
+		if (src.key_presses["W"] || src.key_presses["North"])
 			move_dir |= NORTH
 
-		if (src.keys_pressed["A"])
+		if (src.key_presses["A"] || src.key_presses["West"])
 			move_dir |= WEST
 
-		if (src.keys_pressed["S"])
+		if (src.key_presses["S"] || src.key_presses["South"])
 			move_dir |= SOUTH
 
-		if (src.keys_pressed["D"])
+		if (src.key_presses["D"] || src.key_presses["East"])
 			move_dir |= EAST
 
 		if (move_dir)
 			src.mob.Step(move_dir)
 
-	proc/Process()
-		if (src.keys_pressed["I"])
-			src.mob.Menu()
+	proc/Process(key)
+		switch (key)
+			if ("Q")
+				src.mob.Menu()
 
-		if (src.keys_pressed["Ctrl"] && src.keys_pressed["I"])
-			src.screen.Cut()
+			if ("T")
+				world << "Hello, world!"
 
-		if (src.keys_pressed["T"])
-			world << "Hello, world!"
+			if ("E")
+				src.Interact()
+				animate(src.mob, icon_state = "interact", time = 4)
+				animate(icon_state = "base")
+
+			if ("Escape")
+				for (var/ident in src.open_menus)
+					src.HideMenu(ident)
+
+				src.mob.icon_state = "base"
+
+	proc/Interact()
+		for (var/atom/movable/m in get_step(src.mob, src.mob.dir))
+			m.OnInteract(src.mob)
 
 	proc/GetMenu(ident)
 		return src.menus?[ident]
@@ -70,19 +85,21 @@ client
 
 	proc/ShowMenu(ident)
 		src.GetMenu(ident)?.Show(src)
+		src.open_menus += ident
 
 	proc/HideMenu(ident)
 		src.GetMenu(ident)?.Hide(src)
+		src.open_menus -= ident
 
 	verb/KeyDown(k as text)
 		set instant = TRUE
 		set hidden = TRUE
 
-		src.keys_pressed[k] = TRUE
-		src.Process()
+		src.key_presses[k] = TRUE
+		src.Process(k)
 
 	verb/KeyUp(k as text)
 		set instant = TRUE
 		set hidden = TRUE
 
-		src.keys_pressed -= k
+		src.key_presses -= k

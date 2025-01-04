@@ -11,8 +11,8 @@ obj/item
 			/rarity::MYTHIC
 		)
 
-	Click()
-		usr << "\icon[src][src.name] is \an [lowertext(src.rarity)] item."
+	OnInteract(mob/m)
+		m << "\icon[src][src.name] is \an [lowertext(src.rarity)] item."
 
 obj/item/fish_hook
 	name = "Fish Hook"
