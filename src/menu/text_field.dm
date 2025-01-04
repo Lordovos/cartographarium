@@ -10,4 +10,4 @@ obj/menu/text_field
 		src.maptext_height = size.y
 
 	proc/Set(maptext)
-		src.maptext = maptext
+		src.maptext = ::maptext_image.Replace(maptext, "<img src=\"assets/menu.dmi\" iconstate=\"$1\" width=\"8\" height=\"8\">")
