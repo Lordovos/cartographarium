@@ -85,7 +85,8 @@ client
 
 			spawn ()
 				while (ident in src.open_menus)
-					maptext = "{star}{heart}\nDM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member\n" : null][src.role]\n[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\n"
+					maptext = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member\n" : null][src.role]\n[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\n"
+					maptext += "  Density [src.mob.density ? "On" : "Off"]\n"
 					body?.text_field?.Set(maptext)
 					sleep (world.tick_lag)
 

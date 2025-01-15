@@ -11,14 +11,10 @@ mob/character
 			src.loc = start.loc
 
 		var/obj/menu/group/g = new ("debug", src.client)
-		var/obj/menu/header = new (null, "header", src.client, g, vector(15, 2), vector(1, 13))
-		new /obj/menu(null, "body", src.client, g, vector(15, 23))
-		new /obj/menu/button/close(null, "close", header, g.ident, vector(14, 1))
-
-		var/obj/menu/group/g2 = new ("inventory", src.client)
-		var/obj/menu/header2 = new (null, "header", src.client, g2, vector(15, 2), vector(15, 13))
-		new /obj/menu(null, "body", src.client, g2, vector(15, 23), vector(15, 1))
-		new /obj/menu/button/close(null, "close", header2, g2.ident, vector(14, 1))
+		var/obj/menu/header = new (null, "header", src.client, g, vector(19, 2), vector(1, 18), vector(0, 8))
+		var/obj/menu/body = new (null, "body", src.client, g, vector(19, 34))
+		new /obj/menu/button/close(null, "close", header, g.ident, vector(18, 1))
+		new /obj/menu/button/checkbox(null, "checkbox", body, list("object" = src, "var" = "density", "checked" = TRUE, "unchecked" = FALSE), vector(1, 26)).Set(TRUE)
 
 	verb/Say(t as text)
 		if (t)
