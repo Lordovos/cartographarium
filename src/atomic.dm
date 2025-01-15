@@ -4,7 +4,7 @@ atom
 
 atom/movable
 	step_size = 16
-	appearance_flags = PIXEL_SCALE | LONG_GLIDE
+	appearance_flags = LONG_GLIDE | PIXEL_SCALE
 
 	Bump(atom/a)
 		a.Bumped(src)

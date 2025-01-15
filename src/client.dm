@@ -59,6 +59,9 @@ client
 			if ("Q")
 				src.Debug()
 
+			if ("I")
+				src.Inventory()
+
 			if ("E")
 				src.Interact()
 
@@ -78,13 +81,24 @@ client
 
 		if (!(ident in src.open_menus))
 			src.ShowMenu(ident)
+			header?.text_field?.Set("Debug")
 
 			spawn ()
 				while (ident in src.open_menus)
 					maptext = "{star}{heart}\nDM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member\n" : null][src.role]\n[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\n"
-					header?.text_field.Set("Debug")
-					body?.text_field.Set(maptext)
+					body?.text_field?.Set(maptext)
 					sleep (world.tick_lag)
+
+		else
+			src.HideMenu(ident)
+
+	proc/Inventory()
+		var/ident = "inventory"
+		var/obj/menu/header = src.GetMenu(ident)?.Get("header")
+
+		if (!(ident in src.open_menus))
+			src.ShowMenu(ident)
+			header?.text_field?.Set("Inventory")
 
 		else
 			src.HideMenu(ident)

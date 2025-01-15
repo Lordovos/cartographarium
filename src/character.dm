@@ -10,13 +10,15 @@ mob/character
 		if (start)
 			src.loc = start.loc
 
-		var/obj/menu/group/g = new ("debug")
-		var/obj/menu/header = new (null, "header", vector(15, 2), vector(1, 13))
-		var/obj/menu/body = new (null, "body", vector(15, 23))
+		var/obj/menu/group/g = new ("debug", src.client)
+		var/obj/menu/header = new (null, "header", src.client, g, vector(15, 2), vector(1, 13))
+		new /obj/menu(null, "body", src.client, g, vector(15, 23))
+		new /obj/menu/button/close(null, "close", header, g.ident, vector(14, 1))
 
-		g.Set(header.ident, header)
-		g.Set(body.ident, body)
-		src.client.SetMenu(g.ident, g)
+		var/obj/menu/group/g2 = new ("inventory", src.client)
+		var/obj/menu/header2 = new (null, "header", src.client, g2, vector(15, 2), vector(15, 13))
+		new /obj/menu(null, "body", src.client, g2, vector(15, 23), vector(15, 1))
+		new /obj/menu/button/close(null, "close", header2, g2.ident, vector(14, 1))
 
 	verb/Say(t as text)
 		if (t)

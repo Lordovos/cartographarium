@@ -4,8 +4,9 @@ obj/menu/group
 	var/ident
 	var/alist/menus
 
-	New(ident)
+	New(ident, client/c)
 		src.ident = ident
+		astype(c)?.SetMenu(src.ident, src)
 		src.menus = alist()
 
 	proc/Get(ident)

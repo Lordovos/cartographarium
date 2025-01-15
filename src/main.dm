@@ -1,4 +1,4 @@
-var/regex/maptext_image = regex(@"\{(\w+)\}", "g")
+var/regex/maptext_image = regex(@"\{(\w+)}", "g")
 var/version/version
 
 // This procedure exists purely to include additional resources in the resource file, such as fonts and style sheets.
@@ -35,6 +35,7 @@ world
 
 	New()
 		::version = new ()
+		src.status = "v[::version]"
 
 	Tick()
 		for (var/client/c)

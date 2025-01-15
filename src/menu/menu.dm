@@ -1,14 +1,20 @@
 obj/menu
+	icon = 'assets/menu.dmi'
 	plane = 2
 
 	var/ident
+	var/client/owner
 	var/list/slices
+	var/list/components
 	var/obj/menu/text_field/text_field
 
-	New(loc, ident, vector/size = vector(1, 1), vector/position = vector(1, 1), vector/offset = vector(0, 0))
+	New(loc, ident, client/owner, obj/menu/group/group, vector/size = vector(1, 1), vector/position = vector(1, 1), vector/offset = vector(0, 0))
 		..()
 		src.ident = ident
+		src.owner = astype(owner)
+		astype(group)?.Set(src.ident, src)
 		src.slices = list()
+		src.components = list()
 		src.Draw(size, position, offset)
 
 	proc/Draw(vector/size, vector/position, vector/offset)
@@ -53,3 +59,9 @@ obj/menu
 		src.screen_loc = "[position.x]:[offset.x],[position.y]:[offset.y]"
 		src.text_field = new (src, vector(width + SLICE_SIZE, height - SLICE_SIZE))
 		src.vis_contents += list(src.slices, src.text_field)
+
+	proc/GetComponent(ident)
+		return src.components?[ident]
+
+	proc/SetComponent(ident, component)
+		src.components?[ident] = component
