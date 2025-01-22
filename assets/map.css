@@ -3,6 +3,13 @@ body {
   vertical-align: top;
   line-height: 1;
 }
+.nameplate {
+  font-family: Vaticanus;
+  text-align: center;
+  vertical-align: bottom;
+  line-height: 1.5;
+  -dm-text-outline: 1 #000 sharp square;
+}
 .air-green {
   color: #83d12c;
 }
