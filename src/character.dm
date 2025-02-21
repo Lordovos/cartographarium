@@ -4,6 +4,7 @@ mob/character
 	pixel_y = 4
 
 	var/tmp/image/nameplate
+	var/show_nameplate = TRUE
 
 	New()
 		..()
@@ -21,18 +22,21 @@ mob/character
 		var/obj/menu/body = new (null, "body", src.client, g, vector(19, 34))
 
 		new /obj/menu/button/close(null, "close", header, g.ident, vector(18, 1))
-		new /obj/menu/button/checkbox(null, "checkbox", body, list("object" = src, "var" = "density", "checked" = TRUE, "unchecked" = FALSE), vector(9, 26)).Set(src.density)
+		// TODO: Address that clients can change mobs, so we'll need to update checkbox.target["object"] for all checkboxes upon switching mobs.
+		new /obj/menu/button/checkbox(null, "checkbox", body, list("object" = src, "var" = "density", "checked" = TRUE, "unchecked" = FALSE), vector(11, 26)).Set(src.density)
+		new /obj/menu/button/checkbox(null, "checkbox", body, list("object" = src, "var" = "show_nameplate", "checked" = TRUE, "unchecked" = FALSE), vector(11, 25)).Set(src.show_nameplate)
 		src.Nameplate()
 
 	MouseEntered()
-		usr.client.images += src.nameplate
+		if (src.show_nameplate)
+			usr.client.images += src.nameplate
 
 	MouseExited()
 		usr.client.images -= src.nameplate
 
 	proc/Nameplate()
 		if (!src.nameplate)
-			src.nameplate = image(loc = src, layer = src.layer, pixel_y = world.icon_size)
+			src.nameplate = image(loc = src, layer = src.layer + 1, pixel_y = world.icon_size)
 			src.nameplate.maptext_width = 128
 			src.nameplate.maptext_x = -(src.nameplate.maptext_width / 2) + (world.icon_size / 2)
 

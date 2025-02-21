@@ -3,3 +3,7 @@ turf/tileset
 
 	grass
 		icon_state = "grass"
+
+	water
+		icon_state = "water"
+		density = TRUE

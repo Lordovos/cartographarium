@@ -1,9 +1,14 @@
+#define KEY_CTRL (1 << 0)
+#define KEY_ALT (1 << 1)
+#define KEY_SHIFT (1 << 2)
+
 client
 	tick_lag = 0.01
 	control_freak = CONTROL_FREAK_SKIN
 
 	var/role = /role::DIRECTOR
 	var/list/key_presses
+	var/key_flags = 0
 	var/alist/menus
 	var/list/open_menus
 
@@ -57,7 +62,15 @@ client
 	proc/Process(key)
 		switch (key)
 			if ("Q")
-				src.Debug()
+				if (src.key_flags != 0)
+					if (src.key_flags & KEY_SHIFT)
+						src << "Shift + Q"
+
+					if (src.key_flags & KEY_CTRL)
+						src << "Ctrl + Q"
+
+				else
+					src.Debug()
 
 			if ("I")
 				src.Inventory()
@@ -86,7 +99,7 @@ client
 			spawn ()
 				while (ident in src.open_menus)
 					maptext = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member" : "Non-Member"]\n[src.role]\n[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\n"
-					maptext += "Density\n"
+					maptext += "Density\nNameplate\nKey Modifiers [src.key_flags]\n"
 					body?.text_field?.Set(maptext)
 					sleep (world.tick_lag)
 
@@ -123,6 +136,16 @@ client
 		set hidden = TRUE
 
 		src.key_presses[k] = TRUE
+
+		if (k == "Ctrl")
+			src.key_flags |= KEY_CTRL
+
+		if (k == "Alt")
+			src.key_flags |= KEY_ALT
+
+		if (k == "Shift")
+			src.key_flags |= KEY_SHIFT
+
 		src.Process(k)
 
 	verb/KeyUp(k as text)
@@ -130,3 +153,12 @@ client
 		set hidden = TRUE
 
 		src.key_presses -= k
+
+		if (k == "Ctrl")
+			src.key_flags &= ~KEY_CTRL
+
+		if (k == "Alt")
+			src.key_flags &= ~KEY_ALT
+
+		if (k == "Shift")
+			src.key_flags &= ~KEY_SHIFT
