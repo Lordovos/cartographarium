@@ -2,6 +2,25 @@
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
 // New source code should be placed in .dm files: choose File/New --> Code File.
 
+// Modifier keys.
+#define KEY_CTRL (1 << 0)
+#define KEY_ALT (1 << 1)
+#define KEY_SHIFT (1 << 2)
+
+// Client roles.
+#define ROLE_UNDERSTUDY 1
+#define ROLE_ACTOR 2
+#define ROLE_DIRECTOR 3
+#define ROLE_PRODUCER 4
+
+// Item rarities.
+#define RARITY_COMMON 1
+#define RARITY_UNCOMMON 2
+#define RARITY_RARE 3
+#define RARITY_EPIC 4
+#define RARITY_LEGENDARY 5
+#define RARITY_MYTHIC 6
+
 // BEGIN_INTERNALS
 // END_INTERNALS
 

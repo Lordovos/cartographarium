@@ -1,3 +1,6 @@
 # Cartographarium
 
-**Cartographarium** is a creation tool for developing and running text-based or graphical role-playing adventures. It is currently in the planning stage of development.
+**Cartographarium** is an engine built for fast-paced adaptive role-playing. It is currently in very early development.
+
+## License
+All code in this repository is made available under the [MIT License](LICENSE.txt).

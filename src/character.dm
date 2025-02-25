@@ -11,11 +11,10 @@ mob/character
 		src.Nameplate()
 
 	Login()
-		..()
-		var/obj/waypoint/start/start = locate()
+		var/obj/waypoint/w = locate("start")
 
-		if (start)
-			src.loc = start.loc
+		if (w?.is_active)
+			src.loc = w.loc
 
 		var/obj/menu/group/g = new ("debug", src.client)
 		var/obj/menu/header = new (null, "header", src.client, g, vector(19, 2), vector(1, 18), vector(0, 8))

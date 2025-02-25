@@ -1,5 +1,5 @@
 "a" = (/obj/item/fish_hook,/turf/tileset/grass,/area)
-"b" = (/obj/waypoint/start,/turf/tileset/grass,/area)
+"b" = (/obj/waypoint{tag = "start"},/turf/tileset/grass,/area)
 "c" = (/turf/tileset/water,/area)
 "d" = (/turf/tileset/grass,/area)
 "e" = (/mob/character{name = "Roarke Lanson"},/turf/tileset/grass,/area)

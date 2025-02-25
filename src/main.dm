@@ -1,5 +1,7 @@
 var/regex/maptext_image = regex(@"\{(\w+)}", "g")
 var/version/version
+var/list/rarities = list("Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic")
+var/list/roles = list("Understudy", "Actor", "Director", "Producer")
 
 // This procedure exists purely to include additional resources in the resource file, such as fonts and style sheets.
 proc/additional_resources()
@@ -43,18 +45,3 @@ world
 				c.Tick()
 
 			catch ()
-
-// Enumerated types in idiomatic DM.
-role
-	var/const/UNDERSTUDY = "Understudy"
-	var/const/ACTOR = "Actor"
-	var/const/DIRECTOR = "Director"
-	var/const/PRODUCER = "Producer"
-
-rarity
-	var/const/COMMON = "Common"
-	var/const/UNCOMMON = "Uncommon"
-	var/const/RARE = "Rare"
-	var/const/EPIC = "Epic"
-	var/const/LEGENDARY = "Legendary"
-	var/const/MYTHIC = "Mythic"

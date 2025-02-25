@@ -1,12 +1,8 @@
-#define KEY_CTRL (1 << 0)
-#define KEY_ALT (1 << 1)
-#define KEY_SHIFT (1 << 2)
-
 client
 	tick_lag = 0.01
 	control_freak = CONTROL_FREAK_SKIN
 
-	var/role = /role::DIRECTOR
+	var/role = ROLE_UNDERSTUDY
 	var/list/key_presses
 	var/key_flags = 0
 	var/alist/menus
@@ -82,6 +78,9 @@ client
 				for (var/ident in src.open_menus)
 					src.HideMenu(ident)
 
+	proc/Role()
+		return ::roles[src.role]
+
 	proc/Interact()
 		for (var/atom/movable/m in get_step(src.mob, src.mob.dir))
 			m.OnInteract(src.mob)
@@ -98,7 +97,7 @@ client
 
 			spawn ()
 				while (ident in src.open_menus)
-					maptext = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member" : "Non-Member"]\n[src.role]\n[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\n"
+					maptext = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member" : "Non-Member"]\n[src.Role()]\n[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\n"
 					maptext += "Density\nNameplate\nKey Modifiers [src.key_flags]\n"
 					body?.text_field?.Set(maptext)
 					sleep (world.tick_lag)

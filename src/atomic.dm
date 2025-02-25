@@ -7,7 +7,7 @@ atom/movable
 	appearance_flags = LONG_GLIDE | PIXEL_SCALE
 
 	Bump(atom/a)
-		a.Bumped(src)
+		a?.Bumped(src)
 		..()
 
 	proc/Step(dir = src.dir, delay)
