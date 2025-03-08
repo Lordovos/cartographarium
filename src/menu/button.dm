@@ -17,8 +17,6 @@ obj/menu/button
 		src.Draw(position, offset)
 
 	proc/Draw(vector/position, vector/offset)
-		var/const/SLICE_SIZE = 8
-
 		src.pixel_x = (position.x * SLICE_SIZE) + offset.x
 		src.pixel_y = (position.y * SLICE_SIZE) + offset.y
 		src.parent?.vis_contents += src

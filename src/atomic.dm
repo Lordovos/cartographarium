@@ -20,6 +20,10 @@ area
 turf
 	layer = BACKGROUND_LAYER + 2
 
+	var/can_join = FALSE
+
+	proc/Join()
+
 obj
 	layer = 1
 

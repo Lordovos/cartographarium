@@ -18,7 +18,6 @@ obj/menu
 		src.Draw(size, position, offset)
 
 	proc/Draw(vector/size, vector/position, vector/offset)
-		var/const/SLICE_SIZE = 8
 		var/width = size.x * SLICE_SIZE
 		var/height = size.y * SLICE_SIZE
 		var/scale_x = (width / SLICE_SIZE) - 1

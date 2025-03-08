@@ -1,6 +1,6 @@
-/*
-	/version is a prototype that tracks the current version of the project.
-*/
+/**
+ * /version is used to track the project's current version. This is initialized in world.New().
+ */
 version
 	var/major
 	var/minor
