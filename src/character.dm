@@ -7,7 +7,6 @@ mob/character
 	var/show_nameplate = TRUE
 
 	New()
-		..()
 		src.Nameplate()
 
 	Login()

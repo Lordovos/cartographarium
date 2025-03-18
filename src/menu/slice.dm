@@ -4,5 +4,4 @@ obj/menu/slice
 	vis_flags = VIS_INHERIT_ICON | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
 	New(loc, icon_state)
-		..()
 		src.icon_state = icon_state

@@ -5,7 +5,6 @@ obj/menu/text_field
 	vis_flags = VIS_INHERIT_ICON | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
 	New(loc, vector/size = vector(src.maptext_width, src.maptext_height))
-		..()
 		src.maptext_width = size.x
 		src.maptext_height = size.y
 

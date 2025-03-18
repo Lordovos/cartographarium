@@ -58,15 +58,7 @@ client
 	proc/Process(key)
 		switch (key)
 			if ("Q")
-				if (src.key_flags != 0)
-					if (src.key_flags & KEY_SHIFT)
-						src << "Shift + Q"
-
-					if (src.key_flags & KEY_CTRL)
-						src << "Ctrl + Q"
-
-				else
-					src.Debug()
+				src.Debug()
 
 			if ("I")
 				src.Inventory()

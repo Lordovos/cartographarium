@@ -9,7 +9,6 @@ obj/menu
 	var/obj/menu/text_field/text_field
 
 	New(loc, ident, client/owner, obj/menu/group/group, vector/size = vector(1, 1), vector/position = vector(1, 1), vector/offset = vector(0, 0))
-		..()
 		src.ident = ident
 		src.owner = astype(owner)
 		astype(group)?.Set(src.ident, src)

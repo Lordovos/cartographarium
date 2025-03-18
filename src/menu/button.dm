@@ -9,7 +9,6 @@ obj/menu/button
 	var/target
 
 	New(loc, ident, obj/menu/parent, target, vector/position = vector(0, 0), vector/offset = vector(0, 0))
-		..()
 		src.ident = ident
 		src.parent = astype(parent)
 		src.parent?.SetComponent(src.ident, src)
