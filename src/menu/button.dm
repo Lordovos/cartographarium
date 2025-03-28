@@ -1,11 +1,8 @@
 obj/menu/button
-	parent_type = /obj
-	layer = 2
+	parent_type = /obj/menu/component
 	mouse_opacity = 2
 	vis_flags = VIS_INHERIT_ICON | VIS_INHERIT_PLANE
 
-	var/ident
-	var/obj/menu/parent
 	var/target
 
 	New(loc, ident, obj/menu/parent, target, vector/position = vector(0, 0), vector/offset = vector(0, 0))
@@ -15,7 +12,7 @@ obj/menu/button
 		src.target = target
 		src.Draw(position, offset)
 
-	proc/Draw(vector/position, vector/offset)
+	Draw(vector/position, vector/offset)
 		src.pixel_x = (position.x * SLICE_SIZE) + offset.x
 		src.pixel_y = (position.y * SLICE_SIZE) + offset.y
 		src.parent?.vis_contents += src
@@ -38,12 +35,12 @@ obj/menu/button/checkbox
 
 	var/is_checked = FALSE
 
-	proc/Set(boolean)
+	Update(boolean)
 		src.is_checked = boolean
 		src.icon_state = src.is_checked ? "checkboxchecked" : "checkbox"
 
 	Click()
-		src.Set(!src.is_checked)
+		src.Update(!src.is_checked)
 
 		if (islist(src.target))
 			var/mob/character/c = astype(src.target["object"])

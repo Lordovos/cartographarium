@@ -85,13 +85,13 @@ client
 
 		if (!(ident in src.open_menus))
 			src.ShowMenu(ident)
-			header?.text_field?.Set("Debug")
+			header?.GetComponent("textbox")?.Update("Debug")
 
 			spawn ()
 				while (ident in src.open_menus)
 					maptext = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member" : "Non-Member"]\n[src.Role()]\n[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\n"
 					maptext += "Density\nNameplate\nKey Modifiers [src.key_flags]\n"
-					body?.text_field?.Set(maptext)
+					body?.GetComponent("textbox")?.Update(maptext)
 					sleep (world.tick_lag)
 
 		else
@@ -103,7 +103,7 @@ client
 
 		if (!(ident in src.open_menus))
 			src.ShowMenu(ident)
-			header?.text_field?.Set("Inventory")
+			header?.GetComponent("textbox")?.Update("Inventory")
 
 		else
 			src.HideMenu(ident)

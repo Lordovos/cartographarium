@@ -4,7 +4,7 @@ mob/character
 	pixel_y = 4
 
 	var/tmp/image/nameplate
-	var/show_nameplate = TRUE
+	var/show_nameplate = TRUE in list(TRUE, FALSE)
 
 	New()
 		src.Nameplate()
@@ -21,8 +21,8 @@ mob/character
 
 		new /obj/menu/button/close(null, "close", header, g.ident, vector(18, 1))
 		// TODO: Address that clients can change mobs, so we'll need to update checkbox.target["object"] for all checkboxes upon switching mobs.
-		new /obj/menu/button/checkbox(null, "checkbox", body, list("object" = src, "var" = "density", "checked" = TRUE, "unchecked" = FALSE), vector(11, 26)).Set(src.density)
-		new /obj/menu/button/checkbox(null, "checkbox", body, list("object" = src, "var" = "show_nameplate", "checked" = TRUE, "unchecked" = FALSE), vector(11, 25)).Set(src.show_nameplate)
+		new /obj/menu/button/checkbox(null, "checkbox_density", body, list("object" = src, "var" = "density", "checked" = TRUE, "unchecked" = FALSE), vector(11, 26)).Update(src.density)
+		new /obj/menu/button/checkbox(null, "checkbox_show_nameplate", body, list("object" = src, "var" = "show_nameplate", "checked" = TRUE, "unchecked" = FALSE), vector(11, 25)).Update(src.show_nameplate)
 		src.Nameplate()
 
 	MouseEntered()
