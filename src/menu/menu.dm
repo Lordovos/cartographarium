@@ -58,7 +58,7 @@ obj/menu
 			src.slices += c
 
 		src.screen_loc = "[position.x]:[offset.x],[position.y]:[offset.y]"
-		new /obj/menu/textbox(null, "textbox", src, vector(width + SLICE_SIZE, height - SLICE_SIZE))
+		new /obj/menu/textbox(null, "textbox", src, vector(width - SLICE_SIZE, height - SLICE_SIZE), vector(1, 1))
 		src.vis_contents += src.slices
 
 	proc/GetComponent(ident)

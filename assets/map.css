@@ -1,12 +1,15 @@
-body {
-  margin: 0 8px;
+.menu {
+  font-family: "Public Pixel";
+  font-size: 6pt;
+  color: #fff;
   vertical-align: top;
   line-height: 1;
 }
 .nameplate {
   font-family: Vaticanus;
+  font-size: 6pt;
+  color: #fff;
   text-align: center;
-  vertical-align: bottom;
   line-height: 1.5;
   -dm-text-outline: 1 #000 sharp square;
 }

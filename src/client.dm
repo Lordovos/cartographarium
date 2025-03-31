@@ -115,11 +115,11 @@ client
 		src.menus?[ident] = group
 
 	proc/ShowMenu(ident)
-		src.GetMenu(ident)?.Show(src)
+		src.GetMenu(ident)?.Show()
 		src.open_menus += ident
 
 	proc/HideMenu(ident)
-		src.GetMenu(ident)?.Hide(src)
+		src.GetMenu(ident)?.Hide()
 		src.open_menus -= ident
 
 	verb/KeyDown(k as text)

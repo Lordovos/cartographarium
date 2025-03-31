@@ -2,11 +2,13 @@ obj/menu/group
 	parent_type = /datum
 
 	var/ident
+	var/client/owner
 	var/alist/menus
 
-	New(ident, client/c)
+	New(ident, client/owner)
 		src.ident = ident
-		astype(c)?.SetMenu(src.ident, src)
+		src.owner = astype(owner)
+		src.owner?.SetMenu(src.ident, src)
 		src.menus = alist()
 
 	proc/Get(ident)
@@ -15,16 +17,16 @@ obj/menu/group
 	proc/Set(ident, menu)
 		src.menus?[ident] = menu
 
-	proc/Show(client/c)
+	proc/Show()
 		for (var/ident in src.menus)
 			var/obj/menu/menu = src.Get(ident)
 
 			if (menu)
-				c.screen += menu
+				src.owner?.screen += menu
 
-	proc/Hide(client/c)
+	proc/Hide()
 		for (var/ident in src.menus)
 			var/obj/menu/menu = src.Get(ident)
 
 			if (menu)
-				c.screen -= menu
+				src.owner?.screen -= menu
