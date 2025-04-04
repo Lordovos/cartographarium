@@ -7,3 +7,4 @@ obj/menu/component
 
 	proc/Draw()
 	proc/Update()
+	proc/Clear()

@@ -30,3 +30,6 @@ obj/menu/group
 
 			if (menu)
 				src.owner?.screen -= menu
+
+				for (var/c_ident in menu.components)
+					menu.GetComponent(c_ident)?.Clear()

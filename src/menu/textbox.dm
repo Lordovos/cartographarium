@@ -1,6 +1,6 @@
 obj/menu/textbox
 	parent_type = /obj/menu/component
-	vis_flags = VIS_INHERIT_ICON | VIS_INHERIT_PLANE | VIS_INHERIT_ID
+	vis_flags = VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
 	New(loc, ident, obj/menu/parent, vector/size = vector(src.maptext_width, src.maptext_height), vector/position = vector(0, 0), vector/offset = vector(0, 0))
 		src.ident = ident
@@ -17,3 +17,6 @@ obj/menu/textbox
 
 	Update(maptext)
 		src.maptext = "<span class=\"menu\">[::maptext_image.Replace(maptext, "<img src=\"assets/menu.dmi\" iconstate=\"$1\" width=\"8\" height=\"8\">")]</span>"
+
+	Clear()
+		src.maptext = null

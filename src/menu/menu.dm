@@ -22,8 +22,8 @@ obj/menu
 	proc/Draw(vector/position, vector/offset)
 		var/width = src.width * SLICE_SIZE
 		var/height = src.height * SLICE_SIZE
-		var/scale_x = (width / SLICE_SIZE) - 1
-		var/scale_y = (height / SLICE_SIZE) - 1
+		var/scale_x = src.width - 1
+		var/scale_y = src.height - 1
 		var/obj/menu/slice/bl = new (src, "corner")
 		var/obj/menu/slice/br = new (src, "corner")
 		var/obj/menu/slice/tl = new (src, "corner")
