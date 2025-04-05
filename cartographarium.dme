@@ -46,7 +46,7 @@
 #include "src\tileset.dm"
 #include "src\version.dm"
 #include "src\waypoint.dm"
-#include "src\menu\button.dm"
+#include "src\menu\close.dm"
 #include "src\menu\component.dm"
 #include "src\menu\group.dm"
 #include "src\menu\menu.dm"

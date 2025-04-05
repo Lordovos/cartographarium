@@ -19,12 +19,9 @@ mob/character
 		var/obj/menu/header = new (null, "header", src.client, g, vector(19, 2), vector(1, 18), vector(0, 8))
 		var/obj/menu/body = new (null, "body", src.client, g, vector(19, 34))
 
-		new /obj/menu/button/close(null, "close", header, g.ident, vector(18, 1))
+		new /obj/menu/close(null, "close", header, g.ident, vector(18, 1))
 		new /obj/menu/textbox(null, "textbox", header, vector(18 * SLICE_SIZE, 1 * SLICE_SIZE), vector(1, 1))
 		new /obj/menu/textbox(null, "textbox", body, vector(18 * SLICE_SIZE, 33 * SLICE_SIZE), vector(1, 1))
-		// TODO: Address that clients can change mobs, so we'll need to update checkbox.target["object"] for all checkboxes upon switching mobs.
-		new /obj/menu/button/checkbox(null, "checkbox_density", body, list("object" = src, "var" = "density", "checked" = TRUE, "unchecked" = FALSE), vector(11, 26)).Update(src.density)
-		new /obj/menu/button/checkbox(null, "checkbox_show_nameplate", body, list("object" = src, "var" = "show_nameplate", "checked" = TRUE, "unchecked" = FALSE), vector(11, 25)).Update(src.show_nameplate)
 		src.Nameplate()
 
 	MouseEntered()

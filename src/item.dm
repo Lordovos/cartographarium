@@ -7,8 +7,9 @@ obj/item
 	var/can_stack = FALSE in list(TRUE, FALSE)
 	var/quantity = 1 as num
 
-	New()
+	New(loc, quantity = src.quantity)
 		src.rarity_color = list(null, "air-green", "water-blue", "earth-yellow", "fire-red", "chaos-purple")[src.rarity]
+		src.quantity = quantity
 
 	proc/Rarity()
 		return ::rarities[src.rarity]
