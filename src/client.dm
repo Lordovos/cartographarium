@@ -89,8 +89,7 @@ client
 
 			spawn ()
 				while (ident in src.open_menus)
-					maptext = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member" : "Non-Member"]\n[src.Role()]\n[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\n"
-					maptext += "Density\nNameplate\nKey Modifiers [src.key_flags]\n"
+					maptext = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member" : "Non-Member"]\n[src.Role()]\n[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\nKey Modifiers [src.key_flags]\n"
 					body?.GetComponent("textbox")?.Update(maptext)
 					sleep (world.tick_lag)
 
@@ -142,6 +141,7 @@ client
 		set instant = TRUE
 		set hidden = TRUE
 
+		src.key_presses ||= list()
 		src.key_presses[k] = TRUE
 
 		if (k == "Ctrl")

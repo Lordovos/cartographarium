@@ -32,5 +32,5 @@ obj/menu/group
 			if (menu)
 				src.owner?.screen -= menu
 
-				for (var/c_ident in menu.components)
-					menu.GetComponent(c_ident)?.Clear()
+				for (var/component_ident in menu.components)
+					menu.GetComponent(component_ident)?.Clear()

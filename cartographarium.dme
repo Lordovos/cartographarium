@@ -50,6 +50,7 @@
 #include "src\menu\component.dm"
 #include "src\menu\group.dm"
 #include "src\menu\menu.dm"
+#include "src\menu\separator.dm"
 #include "src\menu\slice.dm"
 #include "src\menu\textbox.dm"
 // END_INCLUDE

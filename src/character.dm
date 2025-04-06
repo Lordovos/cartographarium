@@ -22,6 +22,7 @@ mob/character
 		new /obj/menu/close(null, "close", header, g.ident, vector(18, 1))
 		new /obj/menu/textbox(null, "textbox", header, vector(18 * SLICE_SIZE, 1 * SLICE_SIZE), vector(1, 1))
 		new /obj/menu/textbox(null, "textbox", body, vector(18 * SLICE_SIZE, 33 * SLICE_SIZE), vector(1, 1))
+		new /obj/menu/separator(null, "separator", body, vector(18, 1), position = vector(1, 24))
 		src.Nameplate()
 
 	MouseEntered()
