@@ -79,8 +79,8 @@ client
 
 	proc/Debug()
 		var/ident = "debug"
-		var/obj/menu/header = src.GetMenu(ident)?.Get("header")
-		var/obj/menu/body = src.GetMenu(ident)?.Get("body")
+		var/obj/menu/header = src.FetchMenu(ident, "header")
+		var/obj/menu/body = src.FetchMenu(ident, "body")
 		var/maptext
 
 		if (!(ident in src.open_menus))
@@ -99,7 +99,7 @@ client
 
 	proc/Inventory()
 		var/ident = "inventory"
-		var/obj/menu/header = src.GetMenu(ident)?.Get("header")
+		var/obj/menu/header = src.FetchMenu(ident, "header")
 
 		if (!(ident in src.open_menus))
 			src.ShowMenu(ident)
@@ -111,8 +111,9 @@ client
 	proc/GetMenu(ident)
 		return src.menus?[ident]
 
-	proc/SetMenu(ident, group)
-		src.menus?[ident] = group
+	proc/SetMenu(ident, obj/menu/group/group)
+		if (istype(group))
+			src.menus?[ident] = group
 
 	proc/ShowMenu(ident)
 		src.GetMenu(ident)?.Show()
@@ -121,6 +122,21 @@ client
 	proc/HideMenu(ident)
 		src.GetMenu(ident)?.Hide()
 		src.open_menus -= ident
+
+	proc/FetchMenu(group_ident, menu_ident, component_ident)
+		var/obj/menu/group/group = src.GetMenu(group_ident)
+
+		if (menu_ident)
+			var/obj/menu/menu = group?.Get(menu_ident)
+
+			if (component_ident)
+				var/obj/menu/component/component = menu?.GetComponent(component_ident)
+
+				return component
+
+			return menu
+
+		return group
 
 	verb/KeyDown(k as text)
 		set instant = TRUE

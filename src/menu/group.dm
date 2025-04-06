@@ -14,8 +14,9 @@ obj/menu/group
 	proc/Get(ident)
 		return src.menus?[ident]
 
-	proc/Set(ident, menu)
-		src.menus?[ident] = menu
+	proc/Set(ident, obj/menu/menu)
+		if (istype(menu))
+			src.menus?[ident] = menu
 
 	proc/Show()
 		for (var/ident in src.menus)

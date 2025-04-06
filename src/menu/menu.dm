@@ -63,5 +63,6 @@ obj/menu
 	proc/GetComponent(ident)
 		return src.components?[ident]
 
-	proc/SetComponent(ident, component)
-		src.components?[ident] = component
+	proc/SetComponent(ident, obj/menu/component/component)
+		if (istype(component))
+			src.components?[ident] = component

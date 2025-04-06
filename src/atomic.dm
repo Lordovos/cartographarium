@@ -55,4 +55,4 @@ mob
 			src.next_step = max(src.next_step, world.time + delay)
 			return .
 
-		return 0
+		return FALSE

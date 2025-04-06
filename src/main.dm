@@ -24,6 +24,14 @@ proc/additional_resources()
 proc/hasvar(datum/d, v)
 	return (v in d?.vars)
 
+proc/repeattext(t, n)
+	. = ""
+
+	while (--n >= 0)
+		. += t
+
+	return .
+
 world
 	name = "Cartographarium"
 	hub = "LordAndrew.Cartographarium"
