@@ -1,6 +1,6 @@
 obj/menu/component
 	parent_type = /obj
-	layer = 2
+	vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 
 	var/ident
 	var/obj/menu/parent

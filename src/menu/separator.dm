@@ -1,7 +1,7 @@
 obj/menu/separator
 	parent_type = /obj/menu/component
 	icon_state = "middle"
-	vis_flags = VIS_INHERIT_ICON | VIS_INHERIT_PLANE | VIS_INHERIT_ID
+	vis_flags = VIS_INHERIT_ICON | VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
 	var/width = 1
 	var/height = 1
@@ -10,7 +10,7 @@ obj/menu/separator
 	New(loc, ident, obj/menu/parent, vector/size = vector(src.width, src.height), is_vertical = src.is_vertical, vector/position = vector(0, 0), vector/offset = vector(0, 0))
 		src.ident = ident
 		src.parent = astype(parent)
-		src.parent?.SetComponent(src.ident, src)
+		src.parent?.Set(src.ident, src)
 		src.width = size.x
 		src.height = size.y
 		src.is_vertical = is_vertical

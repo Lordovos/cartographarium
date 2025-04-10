@@ -2,15 +2,12 @@ obj/menu/close
 	parent_type = /obj/menu/component
 	icon_state = "close"
 	mouse_opacity = 2
-	vis_flags = VIS_INHERIT_ICON | VIS_INHERIT_PLANE
+	vis_flags = VIS_INHERIT_ICON | VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 
-	var/menu_ident
-
-	New(loc, ident, obj/menu/parent, menu_ident, vector/position = vector(0, 0), vector/offset = vector(0, 0))
+	New(loc, ident, obj/menu/parent, vector/position = vector(0, 0), vector/offset = vector(0, 0))
 		src.ident = ident
 		src.parent = astype(parent)
-		src.parent?.SetComponent(src.ident, src)
-		src.menu_ident = menu_ident
+		src.parent?.Set(src.ident, src)
 		src.Draw(position, offset)
 
 	Draw(vector/position, vector/offset)
@@ -19,7 +16,7 @@ obj/menu/close
 		src.parent?.vis_contents += src
 
 	Click()
-		src.parent?.owner?.HideMenu(src.menu_ident)
+		src.parent?.owner?.HideMenu(src.parent?.ident)
 
 	MouseEntered()
 		src.color = "#fc7460"

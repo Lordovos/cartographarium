@@ -15,14 +15,13 @@ mob/character
 		if (w?.is_active)
 			src.loc = w.loc
 
-		var/obj/menu/group/g = new ("debug", src.client)
-		var/obj/menu/header = new (null, "header", src.client, g, vector(19, 2), vector(1, 18), vector(0, 8))
-		var/obj/menu/body = new (null, "body", src.client, g, vector(19, 34))
+		var/obj/menu/m = new (null, "debug", src.client, vector(19, 37))
 
-		new /obj/menu/close(null, "close", header, g.ident, vector(18, 1))
-		new /obj/menu/textbox(null, "textbox", header, vector(18 * SLICE_SIZE, 1 * SLICE_SIZE), vector(1, 1))
-		new /obj/menu/textbox(null, "textbox", body, vector(18 * SLICE_SIZE, 33 * SLICE_SIZE), vector(1, 1))
-		new /obj/menu/separator(null, "separator", body, vector(18, 1), position = vector(1, 24))
+		new /obj/menu/background(null, "background", m, vector(m.width, m.height))
+		new /obj/menu/close(null, "close", m, vector(m.width - 1, m.height - 1))
+		new /obj/menu/textbox(null, "title", m, vector((m.width - 3) * SLICE_SIZE, 1 * SLICE_SIZE), vector(1, m.height - 1))
+		new /obj/menu/separator(null, "separator", m, vector(m.width - 1, 1), FALSE, vector(1, m.height - 2))
+		new /obj/menu/textbox(null, "textbox", m, vector((m.width - 1) * SLICE_SIZE, (m.height - 3) * SLICE_SIZE), vector(1, 1))
 		src.Nameplate()
 
 	MouseEntered()

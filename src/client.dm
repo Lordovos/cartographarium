@@ -79,40 +79,32 @@ client
 
 	proc/Debug()
 		var/ident = "debug"
-		var/obj/menu/header = src.FetchMenu(ident, "header")
-		var/obj/menu/body = src.FetchMenu(ident, "body")
-		var/maptext
 
 		if (!(ident in src.open_menus))
 			src.ShowMenu(ident)
-			header?.GetComponent("textbox")?.Update("Debug")
+
+			var/obj/menu/m = src.GetMenu(ident)
+			var/t
+
+			m?.Get("title")?.Update("Debug")
 
 			spawn ()
 				while (ident in src.open_menus)
-					maptext = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member" : "Non-Member"]\n[src.Role()]\n[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\nKey Modifiers [src.key_flags]\n"
-					body?.GetComponent("textbox")?.Update(maptext)
+					t = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member" : "Non-Member"]\n[src.Role()]\n[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\nKey Modifiers [src.key_flags]\n"
+					m?.Get("textbox")?.Update(t)
 					sleep (world.tick_lag)
 
 		else
 			src.HideMenu(ident)
 
 	proc/Inventory()
-		var/ident = "inventory"
-		var/obj/menu/header = src.FetchMenu(ident, "header")
-
-		if (!(ident in src.open_menus))
-			src.ShowMenu(ident)
-			header?.GetComponent("textbox")?.Update("Inventory")
-
-		else
-			src.HideMenu(ident)
 
 	proc/GetMenu(ident)
 		return src.menus?[ident]
 
-	proc/SetMenu(ident, obj/menu/group/group)
-		if (istype(group))
-			src.menus?[ident] = group
+	proc/SetMenu(ident, obj/menu/menu)
+		if (istype(menu))
+			src.menus?[ident] = menu
 
 	proc/ShowMenu(ident)
 		src.GetMenu(ident)?.Show()
@@ -121,21 +113,6 @@ client
 	proc/HideMenu(ident)
 		src.GetMenu(ident)?.Hide()
 		src.open_menus -= ident
-
-	proc/FetchMenu(group_ident, menu_ident, component_ident)
-		var/obj/menu/group/group = src.GetMenu(group_ident)
-
-		if (menu_ident)
-			var/obj/menu/menu = group?.Get(menu_ident)
-
-			if (component_ident)
-				var/obj/menu/component/component = menu?.GetComponent(component_ident)
-
-				return component
-
-			return menu
-
-		return group
 
 	verb/KeyDown(k as text)
 		set instant = TRUE
