@@ -12,6 +12,7 @@ client
 		src.key_presses = list()
 		src.menus = alist()
 		src.open_menus = list()
+		::clients += src
 
 		if (src.IsByondMember())
 			world << "BYOND Member [src.key] has joined the world!"
@@ -22,6 +23,7 @@ client
 		..()
 
 	Del()
+		::clients -= src
 		world << "[src.key] has left the world."
 		..()
 

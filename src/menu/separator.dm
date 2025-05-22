@@ -23,6 +23,6 @@ obj/menu/separator
 		else
 			src.transform = matrix().Scale(src.width, 1).Translate(((src.width - 1) * SLICE_SIZE) / 2, 0)
 
-		src.pixel_x = (position.x * SLICE_SIZE) + offset.x
-		src.pixel_y = (position.y * SLICE_SIZE) + offset.y
+		src.pixel_w = (position.x * SLICE_SIZE) + offset.x
+		src.pixel_z = (position.y * SLICE_SIZE) + offset.y
 		src.parent?.vis_contents += src

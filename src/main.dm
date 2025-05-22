@@ -1,5 +1,6 @@
-var/regex/maptext_image = regex(@"\{(\w+)}", "g")
+var/regex/maptext_image = regex(@`\{(\w+)}`, "gi")
 var/version/version
+var/list/clients
 var/list/rarities = list("Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic")
 var/list/roles = list("Understudy", "Actor", "Director", "Producer")
 var/list/join_dir_flags = list(1, 4, 0, 2, 0, 0, 0, 8)
@@ -45,9 +46,10 @@ world
 	New()
 		::version = new ()
 		src.status = "v[::version]"
+		::clients = list()
 
 	Tick()
-		for (var/client/c)
+		for (var/client/c in ::clients)
 			try
 				c.Tick()
 

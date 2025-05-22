@@ -52,7 +52,7 @@ mob
 	Step(dir = src.dir, delay = src.step_delay)
 		if (src.next_step <= world.time)
 			. = ..()
-			src.next_step = max(src.next_step, world.time + delay)
+			src.next_step = world.time + delay
 			return .
 
 		return FALSE

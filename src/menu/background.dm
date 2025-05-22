@@ -53,13 +53,14 @@ obj/menu/background
 			c.transform = matrix().Scale(scale_x, scale_y).Translate(width / 2, height / 2)
 			src.slices += c
 
-		src.pixel_x = (position.x * SLICE_SIZE) + offset.x
-		src.pixel_y = (position.y * SLICE_SIZE) + offset.y
+		src.pixel_w = (position.x * SLICE_SIZE) + offset.x
+		src.pixel_z = (position.y * SLICE_SIZE) + offset.y
 		src.vis_contents += src.slices
 		src.parent?.vis_contents += src
 
 obj/menu/background/slice
-	parent_type = /obj
+	parent_type = /atom/movable
+	appearance_flags = TILE_BOUND
 	vis_flags = VIS_INHERIT_ICON | VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
 	New(loc, icon_state)

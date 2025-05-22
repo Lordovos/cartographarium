@@ -1,6 +1,8 @@
 obj/menu
+	parent_type = /atom/movable
 	icon = 'assets/menu.dmi'
-	plane = 2
+	plane = MENU_PLANE
+	appearance_flags = TILE_BOUND
 
 	var/ident
 	var/client/owner

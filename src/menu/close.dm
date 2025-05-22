@@ -11,8 +11,8 @@ obj/menu/close
 		src.Draw(position, offset)
 
 	Draw(vector/position, vector/offset)
-		src.pixel_x = (position.x * SLICE_SIZE) + offset.x
-		src.pixel_y = (position.y * SLICE_SIZE) + offset.y
+		src.pixel_w = (position.x * SLICE_SIZE) + offset.x
+		src.pixel_z = (position.y * SLICE_SIZE) + offset.y
 		src.parent?.vis_contents += src
 
 	Click()
