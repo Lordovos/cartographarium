@@ -3,7 +3,10 @@ var/version/version
 var/list/clients
 var/list/rarities = list("Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic")
 var/list/roles = list("Understudy", "Actor", "Director", "Producer")
-var/list/join_dir_flags = list(1, 4, 0, 2, 0, 0, 0, 8)
+var/list/join_dir_flags = list(
+	list(1, 4, 0, 2, 0, 0, 0, 8),
+	list(1, 16, 0, 4, 2, 8, 0, 64, 128, 32)
+)
 
 // This procedure exists purely to include additional resources in the resource file, such as fonts and style sheets.
 proc/additional_resources()

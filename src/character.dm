@@ -34,7 +34,7 @@ mob/character
 	proc/Nameplate()
 		if (!src.nameplate)
 			src.nameplate = image(loc = src, layer = src.layer + 1, pixel_y = world.icon_size)
-			src.nameplate.maptext_width = 128
+			src.nameplate.maptext_width = world.icon_size * 8
 			src.nameplate.maptext_x = -(src.nameplate.maptext_width / 2) + (world.icon_size / 2)
 
 		src.nameplate.maptext = "<span class=\"nameplate\">[src.name]</span>"
