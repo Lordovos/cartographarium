@@ -1,6 +1,6 @@
 client
 	tick_lag = 0.01
-	control_freak = CONTROL_FREAK_SKIN
+	control_freak = CONTROL_FREAK_SKIN | CONTROL_FREAK_MACROS
 
 	var/role = ROLE_UNDERSTUDY
 	var/list/key_presses
@@ -72,7 +72,7 @@ client
 				for (var/ident in src.open_menus)
 					src.HideMenu(ident)
 
-	proc/Role()
+	proc/Role() as text
 		return ::roles[src.role]
 
 	proc/Interact()
@@ -101,7 +101,7 @@ client
 
 	proc/Inventory()
 
-	proc/GetMenu(ident)
+	proc/GetMenu(ident) as /obj/menu
 		return src.menus?[ident]
 
 	proc/SetMenu(ident, obj/menu/menu)

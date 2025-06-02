@@ -22,7 +22,7 @@ obj/menu
 	proc/Draw(vector/position, vector/offset)
 		src.screen_loc = "[position.x]:[offset.x],[position.y]:[offset.y]"
 
-	proc/Get(ident)
+	proc/Get(ident) as /obj/menu/component
 		return src.components?[ident]
 
 	proc/Set(ident, obj/menu/component/component)

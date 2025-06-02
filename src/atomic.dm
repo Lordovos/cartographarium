@@ -10,7 +10,7 @@ atom/movable
 		a?.Bumped(src)
 		..()
 
-	proc/Step(dir = src.dir, delay)
+	proc/Step(dir = src.dir, delay) as num
 		src.glide_size = delay ? src.step_size / (delay / world.tick_lag) : src.step_size
 		return step(src, dir)
 

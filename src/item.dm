@@ -11,7 +11,7 @@ obj/item
 		src.rarity_color = list(null, "air-green", "water-blue", "earth-yellow", "fire-red", "chaos-purple")[src.rarity]
 		src.quantity = quantity
 
-	proc/Rarity()
+	proc/Rarity() as text
 		return ::rarities[src.rarity]
 
 obj/item/fish_hook

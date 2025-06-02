@@ -9,7 +9,7 @@ var/list/join_dir_flags = list(
 )
 
 // This procedure exists purely to include additional resources in the resource file, such as fonts and style sheets.
-proc/additional_resources()
+proc/additional_resources() as /list
 	return list(
 		/**
 		 * Public Pixel and Vaticanus fonts by GGBotNet (https://www.ggbot.net/)
@@ -25,10 +25,10 @@ proc/additional_resources()
 		// 'assets/chat.css'
 	)
 
-proc/hasvar(datum/d, v)
+proc/hasvar(datum/d, v) as num
 	return (v in d?.vars)
 
-proc/repeattext(t, n)
+proc/repeattext(t, n) as text
 	. = ""
 
 	while (--n >= 0)
