@@ -1,6 +1,7 @@
 var/regex/maptext_image = regex(@`\{(\w+)}`, "gi")
 var/version/version
 var/list/clients
+var/list/directors
 var/list/rarities = list("Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic")
 var/list/roles = list("Understudy", "Actor", "Director", "Producer")
 var/list/join_dir_flags = list(
@@ -36,6 +37,33 @@ proc/repeattext(t, n) as text
 
 	return .
 
+proc/save_config()
+	var/fname = "config.json"
+
+	if (fexists(fname))
+		fdel(fname)
+
+	var/f = file(fname)
+	var/list/config = list(
+		"directors" = ::directors
+	)
+
+	f << json_encode(config, JSON_PRETTY_PRINT)
+
+proc/load_config() as /list
+	var/fname = "config.json"
+
+	. = list()
+
+	if (fexists(fname))
+		try
+			. = json_decode(file2text(fname))
+
+		catch (var/exception/e)
+			world.log << "config.json has invalid formatting:\n[e.name]"
+
+	return .
+
 world
 	name = "Cartographarium"
 	hub = "LordAndrew.Cartographarium"
@@ -47,9 +75,15 @@ world
 	mob = /mob/character
 
 	New()
+		var/list/config = ::load_config()
+
 		::version = new ()
 		src.status = "v[::version]"
 		::clients = list()
+		::directors = config["directors"] || list()
+
+	Del()
+		::save_config()
 
 	Tick()
 		for (var/client/c in ::clients)

@@ -20,6 +20,9 @@ client
 		else
 			world << "[src.key] has joined the world."
 
+		if (src.ckey in ::directors)
+			src.role = ROLE_DIRECTOR
+
 		..()
 
 	Del()
