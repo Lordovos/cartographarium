@@ -1,6 +1,6 @@
 client
 	tick_lag = 0.01
-	control_freak = CONTROL_FREAK_ALL// CONTROL_FREAK_SKIN | CONTROL_FREAK_MACROS
+	control_freak = CONTROL_FREAK_ALL
 
 	var/role = ROLE_UNDERSTUDY
 	var/list/key_presses
@@ -21,7 +21,7 @@ client
 
 		else
 			world << "[src.key] has joined the world."
-/*
+
 		if (src.ckey in ::directors)
 			if (src.role < ROLE_DIRECTOR)
 				src.role = ROLE_DIRECTOR
@@ -29,7 +29,7 @@ client
 		else
 			if (src.role >= ROLE_DIRECTOR)
 				src.role = ROLE_ACTOR
-*/
+
 		src.cursor = new (src)
 		src.Zoom(src.zoom)
 		..()
@@ -92,13 +92,6 @@ client
 
 			if ("3")
 				src.Zoom(3)
-
-			if ("F1")
-				src << "F1"
-
-			if ("4")
-				var/mob/m
-				src << m.name
 
 	proc/Role() as text
 		return ::roles[src.role]
