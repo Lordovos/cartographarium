@@ -1,12 +1,14 @@
 client
 	tick_lag = 0.01
-	control_freak = CONTROL_FREAK_SKIN | CONTROL_FREAK_MACROS
+	control_freak = CONTROL_FREAK_ALL// CONTROL_FREAK_SKIN | CONTROL_FREAK_MACROS
 
 	var/role = ROLE_UNDERSTUDY
 	var/list/key_presses
 	var/key_flags = 0
 	var/alist/menus
 	var/list/open_menus
+	var/zoom = 2
+	var/cursor/cursor
 
 	New()
 		src.key_presses = list()
@@ -19,10 +21,17 @@ client
 
 		else
 			world << "[src.key] has joined the world."
-
+/*
 		if (src.ckey in ::directors)
-			src.role = ROLE_DIRECTOR
+			if (src.role < ROLE_DIRECTOR)
+				src.role = ROLE_DIRECTOR
 
+		else
+			if (src.role >= ROLE_DIRECTOR)
+				src.role = ROLE_ACTOR
+*/
+		src.cursor = new (src)
+		src.Zoom(src.zoom)
 		..()
 
 	Del()
@@ -75,12 +84,63 @@ client
 				for (var/ident in src.open_menus)
 					src.HideMenu(ident)
 
+			if ("1")
+				src.Zoom(1)
+
+			if ("2")
+				src.Zoom(2)
+
+			if ("3")
+				src.Zoom(3)
+
+			if ("F1")
+				src << "F1"
+
+			if ("4")
+				var/mob/m
+				src << m.name
+
 	proc/Role() as text
 		return ::roles[src.role]
+
+	proc/Zoom(factor)
+		if (!isnum(factor))
+			factor = 2
+
+		src.zoom = factor
+		winset(src, "map", list("zoom" = src.zoom))
+		src.cursor?.Update()
 
 	proc/Interact()
 		for (var/atom/movable/m in get_step(src.mob, src.mob.dir))
 			m.OnInteract(src.mob)
+
+	proc/Save()
+		var/fname = "savefiles/[src.ckey].sav"
+
+		if (fexists(fname))
+			fdel(fname)
+
+		var/savefile/s = new (fname)
+
+		s["role"] << src.role
+		s["zoom"] << src.zoom
+
+	proc/Load() as num
+		var/fname = "savefiles/[src.ckey].sav"
+		var/savefile/s
+
+		if (fexists(fname))
+			try
+				s = new (fname)
+				s["role"] >> src.role
+				s["zoom"] >> src.zoom
+				return TRUE
+
+			catch (var/exception/e)
+				world.log << ::error(e)
+
+		return FALSE
 
 	proc/Debug()
 		var/ident = "debug"
@@ -95,7 +155,17 @@ client
 
 			spawn ()
 				while (ident in src.open_menus)
-					t = "DM v[DM_VERSION].[DM_BUILD]\nCG v[::version]\n[src.mob.name]\n[src.IsByondMember() ? "BYOND Member" : "Non-Member"]\n[src.Role()]\n[src.mob.x], [src.mob.y], [src.mob.z]\n[src.key_presses?.Join(", ")]\nKey Modifiers [src.key_flags]\n"
+					t = \
+{"DM v[DM_VERSION].[DM_BUILD]
+CG v[::version]
+[src.mob.name]
+[src.IsByondMember() ? "BYOND Member" : "Non-Member"]
+[src.Role()]
+[src.mob.x], [src.mob.y], [src.mob.z]
+[src.key_presses?.Join(", ")]
+Key Modifiers [src.key_flags]
+Zoom [src.zoom]"}
+
 					m?.Get("textbox")?.Update(t)
 					sleep (world.tick_lag)
 

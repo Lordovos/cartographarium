@@ -8,6 +8,7 @@ var/list/join_dir_flags = list(
 	list(1, 4, 0, 2, 0, 0, 0, 8),
 	list(1, 16, 0, 4, 2, 8, 0, 64, 128, 32)
 )
+var/list/cursors
 
 // This procedure exists purely to include additional resources in the resource file, such as fonts and style sheets.
 proc/additional_resources() as /list
@@ -18,12 +19,8 @@ proc/additional_resources() as /list
 		 */
 		'assets/fonts/PublicPixel.ttf',
 		'assets/fonts/Vaticanus.ttf',
-		/**
-		 * map.css and chat.css are hard copies of the style sheets used by the map and chat interface elements, respectively.
-		 * TODO: Automate updating the interface elements with their respective style sheets. Right now you need to manually copy and paste the contents of the style sheet into the interface element's style parameter in the interface editor.
-		 */
-		'assets/map.css',
-		// 'assets/chat.css'
+		// map.css is a hard copy of the style sheet used by the map element.
+		'assets/map.css'
 	)
 
 proc/hasvar(datum/d, v) as num
@@ -34,6 +31,21 @@ proc/repeattext(t, n) as text
 
 	while (--n >= 0)
 		. += t
+
+	return .
+
+proc/error(exception) as text
+	. = ""
+
+	if (istype(exception, /exception))
+		var/exception/e = exception
+#ifdef DEBUG
+		. += "[e.file]:[e.line]: "
+#endif
+		. += e.name
+
+	else
+		. = exception
 
 	return .
 
@@ -60,34 +72,18 @@ proc/load_config() as /list
 			. = json_decode(file2text(fname))
 
 		catch (var/exception/e)
-			world.log << "config.json has invalid formatting:\n[e.name]"
+			world.log << ::error(e)
 
 	return .
 
-world
-	name = "Cartographarium"
-	hub = "LordAndrew.Cartographarium"
-	icon_size = 16
-	view = "27x19"
-	tick_lag = 0.25
-	map_format = SIDE_MAP
-	movement_mode = TILE_MOVEMENT_MODE
-	mob = /mob/character
+proc/generate_cursors() as /list
+	. = new /list(3)
+	.[1] = 'assets/cursor.dmi'
 
-	New()
-		var/list/config = ::load_config()
+	for (var/i in 2 to 3)
+		var/icon/cursor = icon('assets/cursor.dmi')
 
-		::version = new ()
-		src.status = "v[::version]"
-		::clients = list()
-		::directors = config["directors"] || list()
+		cursor.Scale(world.icon_size * i, world.icon_size * i)
+		.[i] = cursor
 
-	Del()
-		::save_config()
-
-	Tick()
-		for (var/client/c in ::clients)
-			try
-				c.Tick()
-
-			catch ()
+	return .
