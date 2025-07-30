@@ -8,7 +8,7 @@ cursor
 	proc/Select(atom/movable/m)
 		src.selection = astype(m)
 
-	proc/Selection()
+	proc/Selection() as /atom/movable
 		return src.selection
 
 	proc/Update()

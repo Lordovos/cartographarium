@@ -10,6 +10,9 @@ mob/character
 		src.Nameplate()
 
 	Login()
+		world << "[src.key] has joined the world."
+		src.client.Zoom(src.client.zoom)
+
 		var/obj/waypoint/w = locate("start")
 
 		if (w?.is_active)
@@ -23,6 +26,9 @@ mob/character
 		new /obj/menu/separator(null, "separator", m, vector(m.width - 1, 1), FALSE, vector(1, m.height - 2))
 		new /obj/menu/textbox(null, "textbox", m, vector((m.width - 1) * SLICE_SIZE, (m.height - 3) * SLICE_SIZE), vector(1, 1))
 		src.Nameplate()
+
+	Logout()
+		world << "[src.key] has left the world."
 
 	MouseEntered()
 		if (src.show_nameplate)

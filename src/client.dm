@@ -14,13 +14,8 @@ client
 		src.key_presses = list()
 		src.menus = alist()
 		src.open_menus = list()
+		src.cursor = new (src)
 		::clients += src
-
-		if (src.IsByondMember())
-			world << "BYOND Member [src.key] has joined the world!"
-
-		else
-			world << "[src.key] has joined the world."
 
 		if (src.ckey in ::directors)
 			if (src.role < ROLE_DIRECTOR)
@@ -30,13 +25,10 @@ client
 			if (src.role >= ROLE_DIRECTOR)
 				src.role = ROLE_ACTOR
 
-		src.cursor = new (src)
-		src.Zoom(src.zoom)
 		..()
 
 	Del()
 		::clients -= src
-		world << "[src.key] has left the world."
 		..()
 
 	North()
