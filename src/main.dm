@@ -2,7 +2,6 @@ var/regex/maptext_image = regex(@`\{(\w+)}`, "gi")
 var/version/version
 var/list/clients
 var/list/directors
-var/list/rarities = list("Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic")
 var/list/roles = list("Understudy", "Actor", "Director", "Producer")
 var/list/join_dir_flags = list(
 	list(1, 4, 0, 2, 0, 0, 0, 8),

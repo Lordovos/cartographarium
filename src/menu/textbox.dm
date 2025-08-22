@@ -16,7 +16,7 @@ obj/menu/textbox
 		src.parent?.vis_contents += src
 
 	Update(maptext)
-		src.maptext = istext(maptext) ? "<span class=\"menu\">[regex(::maptext_image).Replace(maptext, "<img src=\"assets/menu.dmi\" iconstate=\"$1\" width=\"8\" height=\"8\">")]</span>" : null
+		src.maptext = istext(maptext) ? "<span class=\"menu\">[::maptext_image.Replace(maptext, "<img src=\"assets/menu.dmi\" iconstate=\"$1\" width=\"8\" height=\"8\">")]</span>" : null
 
 	Clear()
 		src.maptext = null

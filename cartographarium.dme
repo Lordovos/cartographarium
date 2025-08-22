@@ -25,12 +25,12 @@
 #define ROLE_PRODUCER 4
 
 // Item rarities.
-#define RARITY_COMMON 1
-#define RARITY_UNCOMMON 2
-#define RARITY_RARE 3
-#define RARITY_EPIC 4
-#define RARITY_LEGENDARY 5
-#define RARITY_MYTHIC 6
+#define RARITY_COMMON "Common"
+#define RARITY_UNCOMMON "Uncommon"
+#define RARITY_RARE "Rare"
+#define RARITY_EPIC "Epic"
+#define RARITY_LEGENDARY "Legendary"
+#define RARITY_MYTHIC "Mythic"
 
 // BEGIN_INTERNALS
 // END_INTERNALS

@@ -150,7 +150,6 @@ CG v[::version]
 [src.key_presses?.Join(", ")]
 Key Modifiers [src.key_flags]
 Zoom [src.zoom]"}
-
 					m?.Get("textbox")?.Update(t)
 					sleep (world.tick_lag)
 

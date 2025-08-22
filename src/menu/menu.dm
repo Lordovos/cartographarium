@@ -8,7 +8,7 @@ obj/menu
 	var/client/owner
 	var/width = 1
 	var/height = 1
-	var/list/components
+	var/alist/components
 
 	New(loc, ident, client/owner, vector/size = vector(src.width, src.height), vector/position = vector(1, 1), vector/offset = vector(0, 0))
 		src.ident = ident
@@ -16,7 +16,7 @@ obj/menu
 		src.owner?.SetMenu(src.ident, src)
 		src.width = size.x
 		src.height = size.y
-		src.components = list()
+		src.components = alist()
 		src.Draw(position, offset)
 
 	proc/Draw(vector/position, vector/offset)
