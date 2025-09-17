@@ -19,10 +19,10 @@
 #define KEY_SHIFT (1 << 2)
 
 // Client roles.
-#define ROLE_UNDERSTUDY 1
-#define ROLE_ACTOR 2
-#define ROLE_DIRECTOR 3
-#define ROLE_PRODUCER 4
+#define ROLE_UNDERSTUDY "Understudy"
+#define ROLE_ACTOR "Actor"
+#define ROLE_DIRECTOR "Director"
+#define ROLE_PRODUCER "Producer"
 
 // Item rarities.
 #define RARITY_COMMON "Common"

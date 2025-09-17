@@ -18,11 +18,11 @@ client
 		::clients += src
 
 		if (src.ckey in ::directors)
-			if (src.role < ROLE_DIRECTOR)
+			if (src.role != ROLE_DIRECTOR)
 				src.role = ROLE_DIRECTOR
 
 		else
-			if (src.role >= ROLE_DIRECTOR)
+			if (src.role == ROLE_DIRECTOR)
 				src.role = ROLE_ACTOR
 
 		..()
@@ -63,7 +63,7 @@ client
 
 	proc/Process(key)
 		switch (key)
-			if ("Q")
+			if ("`")
 				src.Debug()
 
 			if ("I")
@@ -84,9 +84,6 @@ client
 
 			if ("3")
 				src.Zoom(3)
-
-	proc/Role() as text
-		return ::roles[src.role]
 
 	proc/Zoom(factor)
 		if (!isnum(factor))
@@ -145,7 +142,7 @@ client
 CG v[::version]
 [src.mob.name]
 [src.IsByondMember() ? "BYOND Member" : "Non-Member"]
-[src.Role()]
+[src.role]
 [src.mob.x], [src.mob.y], [src.mob.z]
 [src.key_presses?.Join(", ")]
 Key Modifiers [src.key_flags]
