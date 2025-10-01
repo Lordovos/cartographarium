@@ -6,7 +6,7 @@ obj/menu/background
 	var/height = 1
 	var/list/slices
 
-	New(loc, ident, obj/menu/parent, vector/size = vector(src.width, src.height), vector/position = vector(0, 0), vector/offset = vector(0, 0))
+	New(loc, ident, obj/menu/parent, vector/position = vector(0, 0), vector/offset = vector(0, 0), vector/size = vector(src.width, src.height))
 		src.ident = ident
 		src.parent = astype(parent)
 		src.parent?.Set(src.ident, src)

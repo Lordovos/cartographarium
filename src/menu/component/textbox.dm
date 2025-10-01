@@ -2,7 +2,7 @@ obj/menu/textbox
 	parent_type = /obj/menu/component
 	vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
-	New(loc, ident, obj/menu/parent, vector/size = vector(src.maptext_width, src.maptext_height), vector/position = vector(0, 0), vector/offset = vector(0, 0))
+	New(loc, ident, obj/menu/parent, vector/position = vector(0, 0), vector/offset = vector(0, 0), vector/size = vector(src.maptext_width, src.maptext_height))
 		src.ident = ident
 		src.parent = astype(parent)
 		src.parent?.Set(src.ident, src)

@@ -10,7 +10,7 @@ obj/menu
 	var/height = 1
 	var/alist/components
 
-	New(loc, ident, client/owner, vector/size = vector(src.width, src.height), vector/position = vector(1, 1), vector/offset = vector(0, 0))
+	New(loc, ident, client/owner, vector/position = vector(1, 1), vector/offset = vector(0, 0), vector/size = vector(src.width, src.height))
 		src.ident = ident
 		src.owner = astype(owner)
 		src.owner?.SetMenu(src.ident, src)
@@ -21,6 +21,8 @@ obj/menu
 
 	proc/Draw(vector/position, vector/offset)
 		src.screen_loc = "[position.x]:[offset.x],[position.y]:[offset.y]"
+
+	proc/Update()
 
 	proc/Get(ident) as /obj/menu/component
 		return src.components?[ident]

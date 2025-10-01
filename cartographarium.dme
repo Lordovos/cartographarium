@@ -32,6 +32,11 @@
 #define RARITY_LEGENDARY "Legendary"
 #define RARITY_MYTHIC "Mythic"
 
+// Orientation.
+#define HORIZONTAL 1
+#define VERTICAL 2
+#define DIAGONAL 3
+
 // BEGIN_INTERNALS
 // END_INTERNALS
 
@@ -56,10 +61,10 @@
 #include "src\version.dm"
 #include "src\waypoint.dm"
 #include "src\world.dm"
-#include "src\menu\background.dm"
-#include "src\menu\close.dm"
-#include "src\menu\component.dm"
 #include "src\menu\menu.dm"
-#include "src\menu\separator.dm"
-#include "src\menu\textbox.dm"
+#include "src\menu\component\background.dm"
+#include "src\menu\component\close.dm"
+#include "src\menu\component\component.dm"
+#include "src\menu\component\separator.dm"
+#include "src\menu\component\textbox.dm"
 // END_INCLUDE

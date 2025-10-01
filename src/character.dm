@@ -18,13 +18,13 @@ mob/character
 		if (w?.active)
 			src.loc = w.loc
 
-		var/obj/menu/m = new (null, "debug", src.client, vector(19, 37))
+		var/obj/menu/d = new (null, "debug", src.client, size = vector(19, 37))
 
-		new /obj/menu/background(null, "background", m, vector(m.width, m.height))
-		new /obj/menu/close(null, "close", m, vector(m.width - 1, m.height - 1))
-		new /obj/menu/textbox(null, "title", m, vector((m.width - 3) * SLICE_SIZE, 1 * SLICE_SIZE), vector(1, m.height - 1))
-		new /obj/menu/separator(null, "separator", m, vector(m.width - 1, 1), FALSE, vector(1, m.height - 2))
-		new /obj/menu/textbox(null, "textbox", m, vector((m.width - 1) * SLICE_SIZE, (m.height - 3) * SLICE_SIZE), vector(1, 1))
+		new /obj/menu/background(null, "background", d, size = vector(d.width, d.height))
+		new /obj/menu/close(null, "close", d, vector(d.width - 1, d.height - 1))
+		new /obj/menu/textbox(null, "title", d, vector(1, d.height - 1), size = vector((d.width - 3) * SLICE_SIZE, SLICE_SIZE))
+		new /obj/menu/separator(null, "separator", d, vector(1, d.height - 2), size = vector(d.width - 1, 1))
+		new /obj/menu/textbox(null, "textbox", d, vector(1, 1), size = vector((d.width - 1) * SLICE_SIZE, (d.height - 3) * SLICE_SIZE))
 		src.Nameplate()
 
 	Logout()
