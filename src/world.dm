@@ -16,7 +16,7 @@ world
 		::version = new ()
 		src.status = "v[::version]"
 		::clients = list()
-		::directors = config["directors"] || list()
+		::staff = config["staff"] || alist()
 		::cursors = ::generate_cursors()
 
 	Del()

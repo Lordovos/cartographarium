@@ -17,13 +17,8 @@ client
 		src.cursor = new (src)
 		::clients += src
 
-		if (src.ckey in ::directors)
-			if (src.role != ROLE_DIRECTOR)
-				src.role = ROLE_DIRECTOR
-
-		else
-			if (src.role == ROLE_DIRECTOR)
-				src.role = ROLE_ACTOR
+		if (src.ckey in ::staff)
+			src.role = ::staff[src.ckey]
 
 		..()
 

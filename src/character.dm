@@ -15,7 +15,7 @@ mob/character
 
 		var/obj/waypoint/w = locate("start")
 
-		if (w?.is_active)
+		if (w?.active)
 			src.loc = w.loc
 
 		var/obj/menu/m = new (null, "debug", src.client, vector(19, 37))

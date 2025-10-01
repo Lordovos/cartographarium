@@ -1,7 +1,7 @@
 var/regex/maptext_image = regex(@`\{(\w+)}`, "gi")
 var/version/version
 var/list/clients
-var/list/directors
+var/alist/staff
 var/list/join_dir_flags = list(
 	list(1, 4, 0, 2, 0, 0, 0, 8),
 	list(1, 16, 0, 4, 2, 8, 0, 64, 128, 32)
@@ -11,7 +11,7 @@ var/list/cursors
 // This procedure exists purely to include additional resources in the resource file, such as fonts and style sheets.
 proc/additional_resources() as /list
 	return list(
-		/**
+		/*
 		 * Public Pixel and Vaticanus fonts by GGBotNet (https://www.ggbot.net/)
 		 * Licensed under CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
 		 */
@@ -55,7 +55,7 @@ proc/save_config()
 
 	var/f = file(fname)
 	var/list/config = list(
-		"directors" = ::directors
+		"staff" = ::staff
 	)
 
 	f << json_encode(config, JSON_PRETTY_PRINT)
